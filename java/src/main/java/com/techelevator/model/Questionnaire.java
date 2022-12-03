@@ -2,29 +2,17 @@ package com.techelevator.model;
 
 public class Questionnaire {
     private int questionnaire_id;
-
     private String first_name;
-
     private String last_name;
-
     private int number_children;
-
     private String housing_type;
-
     private boolean fenced_yard;
-
     private String walker;
-
     private int years_of_pet_experience;
-
     private String renting_or_owning;
-
     private String vet;
-
     private boolean disabled;
-
     private int animal_id;
-
     private int adopter_id;
 
     public int getQuestionnaire_id() {
@@ -131,5 +119,5 @@ public class Questionnaire {
         this.adopter_id = adopter_id;
     }
 
-    
+
 }
