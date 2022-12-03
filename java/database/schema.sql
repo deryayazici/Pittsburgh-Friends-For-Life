@@ -13,6 +13,7 @@ CREATE TABLE volunteer (
     volunteer_id int,
     address varchar(50) not null,
     phone_number varchar(11) not null,
+	is_active boolean not null,
 
 
     CONSTRAINT pk_volunteer PRIMARY KEY (volunteer_id),
@@ -39,9 +40,9 @@ CREATE TABLE animal(
    size varchar(10),
    temperament varchar(50),
    name varchar(20),
-   specialNeeds boolean,
+   special_needs boolean,
    photo varchar (20),
-   isAdopted boolean,
+   is_adopted boolean,
 
    CONSTRAINT pk_animal PRIMARY KEY (animal_id)
 
@@ -50,7 +51,7 @@ CREATE TABLE animal(
 CREATE TABLE adopter (
 
       adopter_id int,
-      approvedToAdopt varchar(10) not null,
+      approved_to_adopt varchar(10) not null,
       animal_id int not null,
 
       CONSTRAINT pk_adopter PRIMARY KEY (adopter_id),
@@ -74,6 +75,11 @@ CREATE TABLE questionnaire (
 	disabled boolean not null,
 	animal_id int not null,
 	adopter_id int not null,
+	reference_one varchar(50) not null,
+	reference_one_contact varchar(50) not null,
+	reference_two varchar(50) not null,
+	reference_two_contact varchar(50) not null,
+
 
 	CONSTRAINT pk_questionnaire PRIMARY KEY (questionnaire_id),
 	CONSTRAINT fk_questionnaire_animal FOREIGN KEY (animal_id) references animal (animal_id),
@@ -85,25 +91,25 @@ COMMIT TRANSACTION;
 
 --SELECT * FROM availability;
 
-SELECT * FROM questionnaire;
+--SELECT * FROM animal;
 
 INSERT INTO users (username,password_hash,role)
 VALUES('testuser','123456789','user');
 
-INSERT INTO volunteer ( volunteer_id,address,phone_number)
-VALUES ((SELECT user_id FROM users WHERE user_id = 1 ),'address','412412412');
+INSERT INTO volunteer ( volunteer_id,address,phone_number,is_active)
+VALUES ((SELECT user_id FROM users WHERE user_id = 1 ),'address','412412412',true);
 
 INSERT INTO availability (volunteer_id,available_date,available_time)
 VALUES ((SELECT volunteer_id FROM volunteer WHERE volunteer_id =1),'2022-12-12','afternoon');
 
-INSERT INTO animal (type,breed,age,temperament,size, name,specialNeeds,isAdopted)
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,is_adopted)
 VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,true);
 
-INSERT INTO adopter ( adopter_id,approvedToAdopt,animal_id)
+INSERT INTO adopter ( adopter_id,approved_to_adopt,animal_id)
 VALUES ((SELECT user_id FROM users WHERE user_id=1),'Approved',1);
 
-INSERT INTO questionnaire (first_name,last_name,number_children,housing_type,fenced_yard,walker,years_of_pet_experience,renting_or_owning,vet,disabled,animal_id,adopter_id)
-VALUES ('Lucas','Rover',0,'House',false,'Lucas',20,'own','vet',false,1,1);
+INSERT INTO questionnaire (first_name,last_name,number_children,housing_type,fenced_yard,walker,years_of_pet_experience,renting_or_owning,vet,disabled,animal_id,adopter_id,reference_one,reference_one_contact,reference_two,reference_two_contact)
+VALUES ('Lucas','Rover',0,'House',false,'Lucas',20,'own','vet',false,1,1,'referenceOne','contactOne','referenceTwo','contactTwo');
 
 
 
