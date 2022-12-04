@@ -40,7 +40,7 @@ public class JdbcVolunteerDao implements volunteerDao{
         String sql = "select * from volunteer where volunteer_id=?";
        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,volunteerID);
        if(results.next()){
-           return MapRowToVolunteer(results)
+           return MapRowToVolunteer(results);
        }else {
            return null;
        }
