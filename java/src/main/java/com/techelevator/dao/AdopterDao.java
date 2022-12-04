@@ -12,7 +12,7 @@ public interface AdopterDao {
 
     String adoptionStatus (int adopterId);
 
-    String updateStatus (int adopterId);
+    void updateStatus (Adopter adopter);
 
     Adopter addAdopter(Adopter newAdopter);
 
