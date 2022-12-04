@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class JdbcAvilablityDao implements AvailabilityDao{
+public class JdbcAvailabilityDao implements AvailabilityDao{
     private final JdbcTemplate jdbcTemplate;
 
 
-    public JdbcAvilablityDao(JdbcTemplate jdbcTemplate) {
+    public JdbcAvailabilityDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
