@@ -14,6 +14,10 @@ public class Questionnaire {
     private boolean disabled;
     private int animal_id;
     private int adopter_id;
+    private String reference_one;
+    private String reference_one_contact;
+    private String reference_two;
+    private String reference_two_contact;
 
     public int getQuestionnaire_id() {
         return questionnaire_id;
@@ -119,5 +123,35 @@ public class Questionnaire {
         this.adopter_id = adopter_id;
     }
 
+    public String getReference_one() {
+        return reference_one;
+    }
 
+    public void setReference_one(String reference_one) {
+        this.reference_one = reference_one;
+    }
+
+    public String getReference_one_contact() {
+        return reference_one_contact;
+    }
+
+    public void setReference_one_contact(String reference_one_contact) {
+        this.reference_one_contact = reference_one_contact;
+    }
+
+    public String getReference_two() {
+        return reference_two;
+    }
+
+    public void setReference_two(String reference_two) {
+        this.reference_two = reference_two;
+    }
+
+    public String getReference_two_contact() {
+        return reference_two_contact;
+    }
+
+    public void setReference_two_contact(String reference_two_contact) {
+        this.reference_two_contact = reference_two_contact;
+    }
 }
