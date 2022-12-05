@@ -31,8 +31,8 @@ public class JdbcAvailabilityDao implements AvailabilityDao{
     private Availability MapRowToAvailability(SqlRowSet results) {
     Availability availability = new Availability();
     availability.setAvailabilityId(results.getInt("Availability_id"));
-    availability.setAvailableDate(results.getDate("Availabile_date"));
-    availability.setAvailableTime(results.getString("Availabile_time"));
+    availability.setAvailableDate(results.getDate("Available_date"));
+    availability.setAvailableTime(results.getString("Available_time"));
     availability.setVolunteerId(results.getInt("Volunteer_id"));
 
     return availability;
@@ -42,7 +42,7 @@ public class JdbcAvailabilityDao implements AvailabilityDao{
     @Override
     public List<Availability> getAvailabilityByDate(Date date) {
         List<Availability> availabilities = new ArrayList<>();
-        String sql = "select * from availability where availabile_date = ?";
+        String sql = "select * from availability where available_date = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql,date);
          if(results.next()){
            Availability availability = (MapRowToAvailability(results));
@@ -54,7 +54,7 @@ public class JdbcAvailabilityDao implements AvailabilityDao{
     @Override
     public List<Availability> getAvailablilityByTime(String time) {
         List<Availability> availabilities = new ArrayList<>();
-        String sql = "select * from availability where availabile_time = ?";
+        String sql = "select * from availability where available_time = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql,time);
         if(results.next()){
             Availability availability = (MapRowToAvailability(results));
@@ -65,12 +65,21 @@ public class JdbcAvailabilityDao implements AvailabilityDao{
 
     @Override
     public List<Availability> getAvailabilityByDateAndTime(Date date, String time) {
-        return null;
+        List<Availability> availabilities =new ArrayList<>();
+        getAvailabilityByDate(date);
+        getAvailablilityByTime(time);
+       return availabilities;
     }
 
     @Override
     public boolean save(Availability availability) {
-        return false;
+        String sql = "insert into Availability(Availability_id,Available_date,Available_time,Volunteer_id)" +
+                "Values(?,?,?,?)";
+        return jdbcTemplate.update(sql,
+                availability.getAvailabilityId(),
+                availability.getAvailableDate(),
+                availability.getAvailableTime(),
+                availability.getVolunteerId())==1;
     }
 
     @Override
@@ -87,6 +96,10 @@ public class JdbcAvailabilityDao implements AvailabilityDao{
 
     @Override
     public boolean update(Availability availability) {
-        return false;
+       String sql = "update Availability " +
+               "set Available_date = ?,Available_time = ?,volunteer_id = ?)"+
+               "where Availability_id = ?;";
+      return jdbcTemplate.update(sql,availability.getAvailabilityId(),availability.getVolunteerId(),
+               availability.getAvailableTime(),availability.getAvailableDate())==1;
     }
 }

@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Availability;
+//import com.techelevator.model.Availability;
 import com.techelevator.model.Volunteer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -48,21 +48,29 @@ public class JdbcVolunteerDao implements volunteerDao{
 
     @Override
     public boolean save(Volunteer volunteer) {
-        return false;
+       String sql = "Insert into Volunteer(volunteer_id,phone_number,address)"+
+               "values(?,?,?,?)";
+       return jdbcTemplate.update(sql,
+               volunteer.getAddress(),
+               volunteer.getPhoneNumber(),
+               volunteer.getPhoneNumber())==1;
     }
 
     @Override
     public boolean update(Volunteer volunteer) {
+        String sql = "update Volunteer "+
+                "set Phone_number = ?, address = ?" +
+                "where volunteer_id = ?;";
+        return jdbcTemplate.update(sql,volunteer.getAddress(),volunteer.getPhoneNumber(),volunteer.getVolunteerId())==1;
+    }
+
+    @Override
+    public boolean setVolunteerInactive(int volunteerId) {
         return false;
     }
 
     @Override
-    public boolean setInactive(int id) {
-        return false;
-    }
-
-    @Override
-    public boolean setActive(int id) {
+    public boolean setVolunteerActive(int volunteerId) {
         return false;
     }
 }
