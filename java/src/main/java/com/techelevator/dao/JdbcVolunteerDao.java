@@ -66,11 +66,13 @@ public class JdbcVolunteerDao implements volunteerDao{
 
     @Override
     public boolean setVolunteerInactive(int volunteerId) {
-        return false;
+        String sql = "update volunteer set is_active = ? where volunteer_id = ?;";
+        return jdbcTemplate.update(sql, false, volunteerId) == 1;
     }
 
     @Override
     public boolean setVolunteerActive(int volunteerId) {
-        return false;
+        String sql = "update volunteer set is_active = ? where volunteer_id = ?;";
+        return jdbcTemplate.update(sql, true, volunteerId) == 1;
     }
 }

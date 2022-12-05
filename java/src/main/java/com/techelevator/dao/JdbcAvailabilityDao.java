@@ -66,8 +66,11 @@ public class JdbcAvailabilityDao implements AvailabilityDao{
     @Override
     public List<Availability> getAvailabilityByDateAndTime(Date date, String time) {
         List<Availability> availabilities =new ArrayList<>();
-        getAvailabilityByDate(date);
-        getAvailablilityByTime(time);
+        String sql = "select * from availability where available_time = ? and available_date = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, time, date);
+        while (results.next()) {
+            availabilities.add(MapRowToAvailability(results));
+        }
        return availabilities;
     }
 
