@@ -12,7 +12,7 @@ public interface volunteerDao {
 
     boolean update(Volunteer volunteer);
 
-    boolean setInactive(int id);
+    boolean setVolunteerInactive(int volunteerId);
 
-    boolean setActive(int id);
+    boolean setVolunteerActive(int volunteerId);
 }
