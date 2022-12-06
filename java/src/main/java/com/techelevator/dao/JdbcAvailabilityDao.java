@@ -54,7 +54,7 @@ public class JdbcAvailabilityDao implements AvailabilityDao{
     }
 
     @Override
-    public List<Availability> getAvailablilityByTime(String time) {
+    public List<Availability> getAvailabilityByTime(String time) {
         List<Availability> availabilities = new ArrayList<>();
         String sql = "select * from availability where available_time = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql,time);
