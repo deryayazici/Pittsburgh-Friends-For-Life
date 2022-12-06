@@ -21,7 +21,7 @@ public class AdopterController {
 
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/adopter/{id}", method = RequestMethod.GET)
     public Adopter getAdopterById(@PathVariable int id) {
         Adopter adopter = adopterDao.getAdopterById(id);
         if (adopter == null) {
@@ -33,18 +33,25 @@ public class AdopterController {
 
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "", method = RequestMethod.POST)
+    @RequestMapping(path = "/adopter", method = RequestMethod.POST)
     public Adopter addAdopter(@Valid @RequestBody Adopter adopter) {
         return adopterDao.addAdopter(adopter);
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/adopter/{id}", method = RequestMethod.PUT)
     public boolean updateStatus(@Valid @RequestBody Adopter adopter, @PathVariable int id) {
       return  adopterDao.updateStatus(adopter);
 
     }
 
+    @RequestMapping (path="/adopter", method = RequestMethod.GET )
+    public  List<Adopter> findAll(){
+     return  adopterDao.findAll();
+    }
 
+    @RequestMapping (path ="/{id}", method = RequestMethod.GET)
+
+    public 
 
 }
 
