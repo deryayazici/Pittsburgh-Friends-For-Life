@@ -7,10 +7,14 @@
         v-if="$store.state.token != ''"
         >Logout</router-link
       >
+      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
+        >Login</router-link
+      >
     </div>
     <router-view />
   </div>
 </template>
+
 <style>
 #nav {
   background-color: #faeee7;
