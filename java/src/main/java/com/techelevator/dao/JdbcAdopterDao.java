@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -46,6 +47,7 @@ public class JdbcAdopterDao implements AdopterDao {
         }
     }
 
+
     @Override
     public String adoptionStatus(int adopterId) {
         String adoptionStatus = "";
@@ -57,16 +59,16 @@ public class JdbcAdopterDao implements AdopterDao {
     }
 
     @Override
-    public void updateStatus(Adopter adopter) {
+    public boolean updateStatus(Adopter adopter) {
         String sql = "" +
                 "UPDATE adopter " +
                 "SET approved_to_adopt = ?," +
                 "    animal_id = ?,"+
                 "WHERE adopter_id = ?;";
 
-        jdbcTemplate.update(sql, adopter.getApprovedToAdopt(),
+     return  jdbcTemplate.update(sql, adopter.getApprovedToAdopt(),
                 adopter.getAnimalId(),
-                adopter.getAdopterId());
+                adopter.getAdopterId()) ==1;
     }
 
     @Override
