@@ -115,6 +115,7 @@ html {
   font-family: "Limelight", cursive;
   min-height: 100vh;
 }
+
 .text-center {
   min-height: 100vh;
   display: flex;
