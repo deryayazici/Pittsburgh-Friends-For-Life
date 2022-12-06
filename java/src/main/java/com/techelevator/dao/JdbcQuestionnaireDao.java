@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Questionnaire;
+import com.techelevator.model.QuestionnaireDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
     }
 
 
-    private Questionnaire MapRowToQuestionnaire(SqlRowSet results){
+    private Questionnaire mapRowToQuestionnaire(SqlRowSet results) {
         Questionnaire questionnaire = new Questionnaire();
         questionnaire.setQuestionnaire_id(results.getInt("questionnaire_id"));
         questionnaire.setFirst_name(results.getString("first_name"));
@@ -47,7 +48,7 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
         String sql = "SELECT * from questionnaire where questionnaire_id=?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         if (results.next()) {
-            return MapRowToQuestionnaire(results);
+            return mapRowToQuestionnaire(results);
         } else {
             return null;
         }
@@ -60,7 +61,7 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
                 "where adopter.adopter_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, adopterId);
         if (results.next()) {
-            return MapRowToQuestionnaire(results);
+            return mapRowToQuestionnaire(results);
         } else {
             return null;
         }
@@ -73,7 +74,7 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
                 "where animal.animal_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, animalId);
         if (results.next()) {
-            return MapRowToQuestionnaire(results);
+            return mapRowToQuestionnaire(results);
         } else {
             return null;
         }
@@ -85,30 +86,31 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
         String sql = "select * from questionnaire;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
-            allQuestionnaires.add(MapRowToQuestionnaire(results));
-        } return allQuestionnaires;
+            allQuestionnaires.add(mapRowToQuestionnaire(results));
+        }
+        return allQuestionnaires;
     }
 
     @Override
-    public boolean save(Questionnaire questionnaireToSave) {
+    public boolean save(QuestionnaireDto questionnaireDto) {
         String sql = "INSERT INTO questionnaire (questionnaire_id,first_name,last_name,number_children,housing_type,fenced_yard,walker,years_of_pet_experience,renting_or_owning,vet,disabled,animal_id,adopter_id,reference_one,reference_one_contact,reference_two,reference_two_contact)\n" +
                 "VALUES (default,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-                return jdbcTemplate.update(sql,
-                questionnaireToSave.getFirst_name(),
-                questionnaireToSave.getLast_name(),
-                questionnaireToSave.getNumber_children(),
-                questionnaireToSave.getHousing_type(),
-                questionnaireToSave.isFenced_yard(),
-                questionnaireToSave.getWalker(),
-                questionnaireToSave.getYears_of_pet_experience(),
-                questionnaireToSave.getRenting_or_owning(),
-                questionnaireToSave.getVet(),
-                questionnaireToSave.isDisabled(),
-                questionnaireToSave.getAnimal_id(),
-                questionnaireToSave.getAdopter_id(),
-                questionnaireToSave.getReference_one(),
-                questionnaireToSave.getReference_one_contact(),
-                questionnaireToSave.getReference_two(),
-                questionnaireToSave.getReference_two_contact()) == 1;
+        return jdbcTemplate.update(sql,
+                questionnaireDto.getFirst_name(),
+                questionnaireDto.getLast_name(),
+                questionnaireDto.getNumber_children(),
+                questionnaireDto.getHousing_type(),
+                questionnaireDto.isFenced_yard(),
+                questionnaireDto.getWalker(),
+                questionnaireDto.getYears_of_pet_experience(),
+                questionnaireDto.getRenting_or_owning(),
+                questionnaireDto.getVet(),
+                questionnaireDto.isDisabled(),
+                questionnaireDto.getAnimal_id(),
+                questionnaireDto.getAdopter_id(),
+                questionnaireDto.getReference_one(),
+                questionnaireDto.getReference_one_contact(),
+                questionnaireDto.getReference_two(),
+                questionnaireDto.getReference_two_contact()) == 1;
     }
 }

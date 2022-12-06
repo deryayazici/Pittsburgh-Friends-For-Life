@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Questionnaire;
+import com.techelevator.model.QuestionnaireDto;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface QuestionnaireDao {
 
     List<Questionnaire> list();
 
-    boolean save(Questionnaire questionnaireToSave);
+    boolean save(QuestionnaireDto questionnaireDto);
 
 
 }
