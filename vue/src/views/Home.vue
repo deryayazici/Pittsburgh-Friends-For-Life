@@ -1,12 +1,24 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <animal-card></animal-card>
+
+    <!-- <h1>Home</h1>
+    <p>You must be authenticated to see this</p> -->
   </div>
 </template>
 
 <script>
+import AnimalCard from "@/components/AnimalCard.vue";
+
 export default {
-  name: "home"
+  components: {
+    AnimalCard,
+  },
+  name: "home",
+
+  data() {
+    return {};
+  },
 };
 </script>
+<style></style>

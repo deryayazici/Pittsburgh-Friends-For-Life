@@ -11,7 +11,7 @@ public interface AvailabilityDao {
 
     List<Availability> getAvailabilityByDate(Date date);
 
-   List<Availability> getAvailablilityByTime(String time);
+    List<Availability> getAvailabilityByTime(String time);
 
     List<Availability> getAvailabilityByDateAndTime(Date date,String time);
 

@@ -1,16 +1,23 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Animal {
+import javax.validation.constraints.NotEmpty;
+
+public class AnimalDto {
+    @JsonProperty("animal_id")
     private int animalId;
+    @NotEmpty
     private String type;
     private String breed;
     private int age;
     private String size;
     private String temperament;
     private String name;
+    @JsonProperty("special_needs")
     private boolean specialNeeds;
     private String photo;
+    @JsonProperty("is_adopted")
     private boolean isAdopted;
 
     public int getAnimalId() {
@@ -92,6 +99,8 @@ public class Animal {
     public void setAdopted(boolean adopted) {
         isAdopted = adopted;
     }
-
-
 }
+
+
+
+
