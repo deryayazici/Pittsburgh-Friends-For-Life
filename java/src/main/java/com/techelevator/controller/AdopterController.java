@@ -49,9 +49,6 @@ public class AdopterController {
      return  adopterDao.findAll();
     }
 
-    @RequestMapping (path ="/{id}", method = RequestMethod.GET)
-
-    public 
 
 }
 

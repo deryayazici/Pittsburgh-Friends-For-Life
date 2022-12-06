@@ -6,6 +6,10 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
 import AnimalDetails from "../views/AnimalDetails.vue";
+import VolunteerList from "../views/VolunteerList.vue";
+import AnimalAdopter from "../views/AnimalAdopter.vue";
+import ShelterDonation from "../views/ShelterDonation.vue";
+
 
 Vue.use(Router);
 
@@ -22,6 +26,30 @@ const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
+    {
+      path:"/donate",
+      name:"donation",
+      component:ShelterDonation,
+      meta: {
+        requiresAuth: false,
+      }
+    },
+    {
+      path:"/adopter",
+      name:"adopt",
+      component:AnimalAdopter,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: "/volunteer",
+      name:"volunteer",
+      component: VolunteerList,
+      meta: {
+        requiresAuth: false,
+      },
+    },
     {
       path: "/:id",
       name: "animal-details",
