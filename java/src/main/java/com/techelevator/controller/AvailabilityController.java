@@ -32,5 +32,10 @@ public class AvailabilityController {
 
     }
 
+    @RequestMapping (path ="/{id}", method = RequestMethod.GET)
+
+    public
+
+
 
 }
