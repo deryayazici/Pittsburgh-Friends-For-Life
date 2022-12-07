@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcVolunteerDao implements volunteerDao{
+public class JdbcVolunteerDao implements VolunteerDao {
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcVolunteerDao(JdbcTemplate jdbcTemplate) {
