@@ -9,7 +9,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      pics: ["../../catPic.jpg", "../../rabbit.jpg"],
+    };
+  },
+};
 </script>
 
 <style>
