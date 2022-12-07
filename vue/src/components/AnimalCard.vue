@@ -13,29 +13,18 @@ export default {};
 </script>
 
 <style>
-.section-center {
-  background-color: red;
-  width: 90vw;
-  margin: 0 auto;
-}
-li {
-  list-style-type: none;
-}
-ul {
-  display: flex;
-  justify-content: space-around;
-}
 img {
   display: block;
   width: 100%;
 }
 .home {
-  background-color: #faeee7;
+  background-color: #fffffe;
   min-height: 100vh;
 }
 .picture {
-  padding: 30px 35px;
-  border: 2px solid #faeee7;
+  background-color: #fffffe;
+  padding: 20px 25px;
+  border: 2px solid #fffffe;
   width: 90vw;
   margin: 0 auto;
   max-width: 400px;

@@ -108,7 +108,7 @@ export default {
 
 :root {
   --clr-1: #ff8ba7;
-  /* 3cf157 */
+  --clr-2: #3cf157;
 }
 
 html {
@@ -120,25 +120,26 @@ html {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: #faeee7;
+  align-items: start;
+  background-color: #fffffe;
 }
-form {
+.form-register,
+.form-signin {
   padding: 30px 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   border: 2px solid #fffffe;
   border-radius: 8px;
   background-color: #fffffe;
 }
-h1 {
+.h3 {
   font-weight: 900;
   margin-bottom: 10px;
   letter-spacing: 4px;
   border-bottom: 2px solid var(--clr-1);
 }
 
-form label,
-input {
+.sr-only,
+.form-control {
   display: block;
   margin-bottom: 5px;
 }
@@ -159,7 +160,8 @@ input::placeholder {
   border-color: var(--clr-1);
 }
 
-button {
+.btn,
+.btn-signin {
   margin-top: 1rem;
   display: block;
   width: 100%;
@@ -171,12 +173,14 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
-button:hover {
+.btn:hover,
+.btn-signin:hover {
   background-color: #ffc6c7;
 }
 
 a {
   text-decoration: none;
+  color: var(--clr-1);
 }
 a:visited {
   color: var(--clr-1);
