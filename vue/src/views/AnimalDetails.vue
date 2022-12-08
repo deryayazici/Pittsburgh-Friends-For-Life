@@ -8,14 +8,23 @@
 <script>
 import AnimalInfo from "@/components/AnimalInfo.vue";
 import animalService from "@/services/AnimalService.js";
+
 export default {
+    data() {
+    return {
+        animal: {}   
+    };
+  },
   
   methods: {
     displayAnimalDetails() {
-      animalService.getAnimalById(this.animalId) .then(response => {
+      animalService.getAnimalById(this.$route.params.animalId) .then(response => {
         return response.data
-      })
-    }
+      });
+    },
+     created() {
+          this.displayAnimalDetails
+      }
   },
 
   components: {

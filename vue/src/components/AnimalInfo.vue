@@ -2,7 +2,7 @@
   <div>
     <article class="picture">
       <div class="pic-container">
-        <h1>It works!</h1>
+        <h1>it works</h1>
         
           <img v-bind:src="animalDetail.photo" alt="" />
         
@@ -16,7 +16,8 @@ export default {
   props: ['animalDetail'],
 
   data() {
-    return {};
+    return {
+    };
   },
 };
 </script>
