@@ -1,22 +1,20 @@
 <template>
-  <section>
-    <article class="picture">
-      <div class="pic-container">
-        <!-- <router-link to="/animals/${id}"> -->
-        <img
-          v-for="pic in pics"
-          :key="pic"
-          :src="require(`@/assets/${pic}`)"
-          alt=""
-        />
-        <!-- </router-link> -->
-      </div>
-    </article>
+<section>
+  <article class="picture" >
+    <div class="pic-container">
+      <router-link >
+        <img src="../../catPic.jpg" alt="" />
+      </router-link>
+
+    </div>
+  </article>
   </section>
 </template>
 
 <script>
+import animalService from '@/services/AnimalService.js';
 export default {
+
   data() {
     return {
       pics: [
@@ -28,6 +26,17 @@ export default {
         "ferret2.jpg",
       ],
     };
+  },
+  methods:{
+    displayAnimals() {
+    animalService.listAdoptableAnimals()
+    .then (response => {
+      this.$store.commit("SET_ANIMALS", response.data);
+    });
+    }
+  },
+  created() {
+    this.displayAnimals()
   },
 };
 </script>

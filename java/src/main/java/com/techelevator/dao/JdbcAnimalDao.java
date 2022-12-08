@@ -73,7 +73,7 @@ public class JdbcAnimalDao implements AnimalDao{
     public List<Animal> listAdoptableAnimals() {
         List<Animal> displayAnimal = new ArrayList<>();
 
-        String sql = "SELECT * FROM animal WHERE is_adopted = false";
+        String sql = "SELECT * FROM animal WHERE is_adopted = true";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 

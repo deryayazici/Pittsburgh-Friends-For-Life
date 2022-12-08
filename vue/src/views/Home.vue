@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <animal-card></animal-card>
+    
+    <animal-card v-for="animal in $store.state.animals" v-bind:key="animal.id" ></animal-card>
+
 
     <!-- <h1>Home</h1>
     <p>You must be authenticated to see this</p> -->
@@ -11,6 +13,7 @@
 import AnimalCard from "@/components/AnimalCard.vue";
 
 export default {
+
   components: {
     AnimalCard,
   },
