@@ -2,9 +2,10 @@
   <div>
     <article class="picture">
       <div class="pic-container">
-        <router-link to="/animals/${id}">
-          <img src="../../catPic.jpg" alt="" />
-        </router-link>
+        <h1>It works!</h1>
+        
+          <img v-bind:src="animalDetail.photo" alt="" />
+        
       </div>
     </article>
   </div>
@@ -12,6 +13,8 @@
 
 <script>
 export default {
+  props: ['animalDetail'],
+
   data() {
     return {};
   },

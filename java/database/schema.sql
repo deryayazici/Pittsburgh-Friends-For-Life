@@ -103,7 +103,7 @@ INSERT INTO availability (volunteer_id,available_date,available_time)
 VALUES ((SELECT volunteer_id FROM volunteer WHERE volunteer_id =1),'2022-12-12','afternoon');
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://files.slack.com/files-pri/T0GNFLF6D-F04E5QLFAN7/img_2409.jpg',true);
+VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
 VALUES ('cat','tabby',10,'Noisy','Small','Oliver',false,'https://styles.redditmedia.com/t5_2r5i1/styles/communityIcon_x4lqmqzu1hi81.jpg',true);
