@@ -1,19 +1,35 @@
 <template>
-  <article class="picture">
+<section>
+  <article class="picture" >
     <div class="pic-container">
-      <router-link to="/animals/${id}">
+      <router-link >
         <img src="../../catPic.jpg" alt="" />
       </router-link>
+
     </div>
   </article>
+  </section>
 </template>
 
 <script>
+import animalService from '@/services/AnimalService.js';
 export default {
+
   data() {
     return {
       pics: ["../../catPic.jpg", "../../rabbit.jpg"],
     };
+  },
+  methods:{
+    displayAnimals() {
+    animalService.listAdoptableAnimals()
+    .then (response => {
+      this.$store.commit("SET_ANIMALS", response.data);
+    });
+    }
+  },
+  created() {
+    this.displayAnimals()
   },
 };
 </script>

@@ -34,10 +34,10 @@ public class AvailabilityController {
     }
 
 
-    @RequestMapping (path ="/availability", method = RequestMethod.GET)
-    public List<Availability> listAvailableDates(@RequestParam Date date) {
-      return  availabilityDao.getAvailabilityByDate(date);
-    }
+//    @RequestMapping (path ="/availability", method = RequestMethod.GET)
+//    public List<Availability> listAvailableDates(@RequestParam Date date) {
+//      return  availabilityDao.getAvailabilityByDate(date);
+//    }
 
 
 
