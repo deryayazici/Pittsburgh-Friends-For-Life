@@ -52,8 +52,11 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_ANIMALS(state, data) {
-      state.newAnimal = data;
+    SET_ANIMAL(state, data) {
+      state.animals = data;
     },
-  }
+  },
+  created() {
+   this.displayAnimals()
+    },
 })
