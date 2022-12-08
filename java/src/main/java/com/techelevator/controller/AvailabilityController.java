@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -32,9 +33,14 @@ public class AvailabilityController {
 
     }
 
-//    @RequestMapping (path ="/{id}", method = RequestMethod.GET)
-//
-//    public
+
+//    @RequestMapping (path ="/availability", method = RequestMethod.GET)
+//    public List<Availability> listAvailableDates(@RequestParam Date date) {
+//      return  availabilityDao.getAvailabilityByDate(date);
+//    }
+
+
+
 
 
 

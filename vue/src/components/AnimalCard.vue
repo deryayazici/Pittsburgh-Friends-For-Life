@@ -1,34 +1,35 @@
 <template>
-  <section>
-    <article class="picture">
-      <div class="pic-container">
-        <!-- <router-link to="/animals/${id}"> -->
-        <img
-          v-for="pic in pics"
-          :key="pic"
-          :src="require(`@/assets/${pic}`)"
-          alt=""
-        />
-        <!-- </router-link> -->
-      </div>
-    </article>
+<section>
+  <article class="picture" >
+    <div class="pic-container">
+     <router-link v-bind:to="{name: 'animal-details', params: { animalId: animal.animalId }}">
+        <img v-bind:src="animal.photo" alt="" />
+        <h3>{{animal.name}}</h3>
+     </router-link>
+    </div>
+  </article>
   </section>
 </template>
 
 <script>
+
 export default {
+
+  props:['animal'],
+     
   data() {
     return {
-      pics: [
-        "catPic.jpg",
-        "rabbit.jpg",
-        "dog.jpg",
-        "ferret.jpg",
-        "indy.jpg",
-        "ferret2.jpg",
-      ],
+      // pics: [
+      //   "catPic.jpg",
+      //   "rabbit.jpg",
+      //   "dog.jpg",
+      //   "ferret.jpg",
+      //   "indy.jpg",
+      //   "ferret2.jpg",
+      // ],
     };
   },
+  
 };
 </script>
 
