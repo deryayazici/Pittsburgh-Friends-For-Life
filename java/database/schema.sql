@@ -41,7 +41,7 @@ CREATE TABLE animal(
    temperament varchar(50),
    name varchar(20),
    special_needs boolean,
-   photo varchar (20),
+   photo varchar (200),
    is_adopted boolean,
 
    CONSTRAINT pk_animal PRIMARY KEY (animal_id)
@@ -102,8 +102,8 @@ VALUES ((SELECT user_id FROM users WHERE user_id = 1 ),'address','412412412',tru
 INSERT INTO availability (volunteer_id,available_date,available_time)
 VALUES ((SELECT volunteer_id FROM volunteer WHERE volunteer_id =1),'2022-12-12','afternoon');
 
-INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,true);
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://files.slack.com/files-pri/T0GNFLF6D-F04E5QLFAN7/img_2409.jpg',true);
 
 INSERT INTO adopter ( adopter_id,approved_to_adopt,animal_id)
 VALUES ((SELECT user_id FROM users WHERE user_id=1),'Approved',1);

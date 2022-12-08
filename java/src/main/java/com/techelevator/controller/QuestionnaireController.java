@@ -5,6 +5,8 @@ import com.techelevator.model.Questionnaire;
 import com.techelevator.model.QuestionnaireDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,18 +21,22 @@ public class QuestionnaireController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/adopt/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/adopt/questionnaire/submit", method = RequestMethod.POST)
     public void submitQuestionnaire(@Valid @RequestBody QuestionnaireDto questionnaire) {
         try {
             questionnaireDao.save(questionnaire);
-        } catch (Exception e) {
+        } catch (ResponseStatusException e) {
             e.printStackTrace();
         }
     }
 
-//    @ResponseStatus(HttpStatus.OK)
-//    @RequestMapping(value = "/adopt/list", method = RequestMethod.GET)
-//    public void listQuestionnaires() {
-//        
-//    }
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/adopt/list", method = RequestMethod.PUT)
+    public void listQuestionnaires() {
+        try {
+            questionnaireDao.list();
+        } catch (ResponseStatusException e) {
+            e.printStackTrace();
+        }
+    }
 }

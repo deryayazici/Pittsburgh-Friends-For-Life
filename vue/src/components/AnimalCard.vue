@@ -1,45 +1,81 @@
 <template>
-  <article class="picture">
-    <div class="pic-container">
-      <router-link to="/animals/${id}">
-        <img src="../../catPic.jpg" alt="" />
-      </router-link>
-    </div>
-  </article>
+  <section>
+    <ul>
+      <li v-for="pic in pics" :key="pic">
+        <article class="picture">
+          <div class="pic-container">
+            <router-link to="/animals/${id}">
+              <img :src="require(`@/assets/${pic}`)" alt="" />
+            </router-link>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      pics: [
+        "catPic.jpg",
+        "rabbit.jpg",
+        "dog.jpg",
+        "ferret.jpg",
+        "indy.jpg",
+        "ferret2.jpg",
+      ],
+    };
+  },
+};
 </script>
 
 <style>
-.section-center {
-  background-color: red;
-  width: 90vw;
-  margin: 0 auto;
+.home {
+  background-color: #fffffe;
+
+  min-height: 100vh;
 }
 li {
   list-style-type: none;
 }
-ul {
-  display: flex;
-  justify-content: space-around;
-}
 img {
   display: block;
   width: 100%;
-}
-.home {
-  background-color: #faeee7;
-  min-height: 100vh;
+  margin: 10px 0 20px;
 }
 .picture {
-  padding: 30px 35px;
-  border: 2px solid #faeee7;
+  margin: 20px;
+}
+.pic-container {
+  margin: 20px 0;
+  background-color: #fffffe;
+  padding: 20px 25px;
+  border: 2px solid #fffffe;
   width: 90vw;
-  margin: 0 auto;
-  max-width: 400px;
+  margin: 20px auto;
+  max-width: 300px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   border-radius: 4px;
+}
+
+@media screen and (min-width: 500px) {
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 90vw;
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+  img {
+    object-fit: cover;
+    height: 300px;
+  }
+  @media screen and (min-width: 768px) {
+    ul {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
 }
 </style>
