@@ -25,7 +25,7 @@
 
 <style>
 body {
-  background-color: rgb(251, 251, 187);
+  background-color: #fbfbbb;
 }
 #nav {
   padding: 1rem 0 2.5rem 1rem;

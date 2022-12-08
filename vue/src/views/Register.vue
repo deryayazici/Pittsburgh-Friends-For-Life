@@ -109,6 +109,7 @@ export default {
 :root {
   --clr-1: #ff8ba7;
   --clr-2: #3cf157;
+  --clr-3: #fbfbbb;
 }
 
 html {
@@ -129,7 +130,7 @@ html {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   border: 2px solid #fffffe;
   border-radius: 8px;
-  background-color: #fffffe;
+  /* background-color: #fffffe; */
 }
 .h3 {
   font-weight: 900;

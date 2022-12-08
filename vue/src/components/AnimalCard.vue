@@ -37,7 +37,7 @@ export default {
 
 <style>
 .home {
-  background-color: #fffffe;
+  /* background-color: #fffffe; */
 
   min-height: 100vh;
 }
