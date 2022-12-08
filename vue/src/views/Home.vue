@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     
-    <animal-card v-for="animal in $store.state.animals" v-bind:key="animal.id" v-bind:animal="animal"></animal-card>
+    <animal-card v-for="animal in $store.state.animals" v-bind:key="animal.id" v-bind:animal="animal" ></animal-card>
 
     <!-- <h1>Home</h1>
     <p>You must be authenticated to see this</p> -->
