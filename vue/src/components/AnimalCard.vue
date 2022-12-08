@@ -2,35 +2,27 @@
 <section>
   <article class="picture" >
     <div class="pic-container">
-      <router-link >
-        <img src="../../catPic.jpg" alt="" />
-      </router-link>
-
+     
+        <img v-bind:src="animal.photo" alt="" />
+        <h3>{{animal.name}}</h3>
+     
     </div>
   </article>
   </section>
 </template>
 
 <script>
-import animalService from '@/services/AnimalService.js';
+
 export default {
 
+  props:['animal'],
+     
   data() {
     return {
       pics: ["../../catPic.jpg", "../../rabbit.jpg"],
     };
   },
-  methods:{
-    displayAnimals() {
-    animalService.listAdoptableAnimals()
-    .then (response => {
-      this.$store.commit("SET_ANIMALS", response.data);
-    });
-    }
-  },
-  created() {
-    this.displayAnimals()
-  },
+  
 };
 </script>
 
