@@ -31,4 +31,10 @@ public class AnimalController {
         dao.addAnimal(animal);
     }
 
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Animal> listAdoptableAnimals(){
+
+      return dao.listAdoptableAnimals();
+    }
+
 }

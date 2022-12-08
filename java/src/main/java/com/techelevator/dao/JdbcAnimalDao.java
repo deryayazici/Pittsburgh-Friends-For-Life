@@ -69,6 +69,20 @@ public class JdbcAnimalDao implements AnimalDao{
         return animal;
     }
 
+    @Override
+    public List<Animal> listAdoptableAnimals() {
+        List<Animal> displayAnimal = new ArrayList<>();
+
+        String sql = "SELECT * FROM animal WHERE is_adopted = true";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()){
+            displayAnimal.add(mapRowToAnimal(results));
+        }
+        return displayAnimal;
+    }
+
     private Animal mapRowToAnimal(SqlRowSet rs){
         Animal animal = new Animal();
         animal.setAnimalId(rs.getInt("animal_id"));

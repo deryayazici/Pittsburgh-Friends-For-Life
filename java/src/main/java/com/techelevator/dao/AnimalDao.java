@@ -12,5 +12,8 @@ public interface AnimalDao {
 
     Animal addAnimal (Animal animal);
 
+    List<Animal> listAdoptableAnimals();
+
+
 
 }
