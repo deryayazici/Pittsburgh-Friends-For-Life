@@ -1,19 +1,19 @@
 <template>
-  <section class="picture">
-    <div class="pic-container">
-      <router-link to="/animals/${id}">
-        <img src="../../catPic.jpg" alt="" />
-      </router-link>
-      <h3>Fiddles</h3>
-      <p>4 years old</p>
-      <p>cute cuddly cat</p>
-      <span><i class="fa-solid fa-cat"></i></span>
-    </div>
-  </section>
+  <div>
+    <article class="picture">
+      <div class="pic-container">
+        <h1>It works!</h1>
+
+        <img v-bind:src="animalDetail.photo" alt="" />
+      </div>
+    </article>
+  </div>
 </template>
 
 <script>
 export default {
+  props: ["animalDetail"],
+
   data() {
     return {};
   },
