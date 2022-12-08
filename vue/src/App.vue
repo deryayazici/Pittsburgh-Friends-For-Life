@@ -44,7 +44,7 @@ body {
   color: #fffffe;
   /* border: 5px solid #ff8ba7; */
   padding: 10px 0;
-  background-color: #3cf157;
+  background-color: var(--clr-1);
   border-radius: 4px;
 }
 </style>

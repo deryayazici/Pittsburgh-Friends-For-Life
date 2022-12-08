@@ -183,6 +183,6 @@ a {
   color: var(--clr-1);
 }
 a:visited {
-  color: var(--clr-1);
+  color: var(--clr-2);
 }
 </style>

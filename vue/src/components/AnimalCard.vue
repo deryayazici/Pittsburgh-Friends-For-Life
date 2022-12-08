@@ -1,17 +1,16 @@
 <template>
   <section>
-    <article class="picture">
-      <div class="pic-container">
-        <!-- <router-link to="/animals/${id}"> -->
-        <img
-          v-for="pic in pics"
-          :key="pic"
-          :src="require(`@/assets/${pic}`)"
-          alt=""
-        />
-        <!-- </router-link> -->
-      </div>
-    </article>
+    <ul>
+      <li v-for="pic in pics" :key="pic">
+        <article class="picture">
+          <div class="pic-container">
+            <router-link to="/animals/${id}">
+              <img :src="require(`@/assets/${pic}`)" alt="" />
+            </router-link>
+          </div>
+        </article>
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -35,12 +34,19 @@ export default {
 <style>
 .home {
   background-color: #fffffe;
+
   min-height: 100vh;
+}
+li {
+  list-style-type: none;
 }
 img {
   display: block;
   width: 100%;
   margin: 10px 0 20px;
+}
+.picture {
+  margin: 20px;
 }
 .pic-container {
   margin: 20px 0;
@@ -48,14 +54,14 @@ img {
   padding: 20px 25px;
   border: 2px solid #fffffe;
   width: 90vw;
-  margin: 1.5rem auto;
+  margin: 20px auto;
   max-width: 300px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   border-radius: 4px;
 }
 
 @media screen and (min-width: 500px) {
-  .pic-container {
+  ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-width: 90vw;
@@ -67,7 +73,7 @@ img {
     height: 300px;
   }
   @media screen and (min-width: 768px) {
-    .pic-container {
+    ul {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
