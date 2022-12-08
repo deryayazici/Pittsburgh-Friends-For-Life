@@ -87,7 +87,7 @@ public class JdbcAnimalDao implements AnimalDao{
         Animal animal = new Animal();
         animal.setAnimalId(rs.getInt("animal_id"));
         animal.setType(rs.getString("type"));
-        animal.setBreed(rs.getNString("breed"));
+        animal.setBreed(rs.getString("breed"));
         animal.setAge(rs.getInt("age"));
         animal.setSize(rs.getString("size"));
         animal.setTemperament(rs.getString("temperament"));

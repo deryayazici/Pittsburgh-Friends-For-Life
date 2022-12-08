@@ -105,6 +105,9 @@ VALUES ((SELECT volunteer_id FROM volunteer WHERE volunteer_id =1),'2022-12-12',
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
 VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://files.slack.com/files-pri/T0GNFLF6D-F04E5QLFAN7/img_2409.jpg',true);
 
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('cat','tabby',10,'Noisy','Small','Oliver',false,'https://styles.redditmedia.com/t5_2r5i1/styles/communityIcon_x4lqmqzu1hi81.jpg',true);
+
 INSERT INTO adopter ( adopter_id,approved_to_adopt,animal_id)
 VALUES ((SELECT user_id FROM users WHERE user_id=1),'Approved',1);
 
