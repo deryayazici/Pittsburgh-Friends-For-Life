@@ -10,6 +10,16 @@ public class Volunteer {
     @NotEmpty
     private String address;
 
+    private boolean isActive;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
     public int getVolunteerId() {
         return volunteerId;
     }
