@@ -2,9 +2,10 @@
 <section>
   <article class="picture" >
     <div class="pic-container">
-     <router-link v-bind:to="{name: 'animal-details', params: { animalId: animal.animalId }}">
+     <router-link v-bind:to="{name: 'animal-details', params: { animalId: animal.animalId }}" v-bind:animal="animal">
         <img v-bind:src="animal.photo" alt="" />
         <h3>{{animal.name}}</h3>
+  
      </router-link>
     </div>
   </article>
