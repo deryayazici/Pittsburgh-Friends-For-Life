@@ -1,7 +1,10 @@
 <template>
   <div>
-    <h2>{{animal.name}}</h2>
-    <animal-info v-bind:animalDetail="animal"></animal-info>
+    <animal-info :animal="animal"></animal-info>
+    <!-- <h2>{{animal.name}}</h2> -->
+    
+     <animal-info />
+   
   </div>
 </template>
 
@@ -12,25 +15,26 @@ import animalService from "@/services/AnimalService.js";
 export default {
     data() {
     return {
-        animal: {}   
+        animal:{}
+  
     };
   },
   
-  methods: {
-    displayAnimalDetails() {
-      animalService.getAnimalById(this.$route.params.animalId) .then(response => {
-        return response.data
+   methods:{
+    displayAnimalsDetails() {
+    animalService.getAnimalById(this.$route.params.animalId)
+    .then ((response) => { 
+      this.animal=response.data
       });
     },
-     created() {
-          this.displayAnimalDetails
-      }
   },
-
+ created() {
+  this.displayAnimalsDetails()
+ },
   components: {
     AnimalInfo,
-  },
-};
+  }
+}
 </script>
 
 <style></style>
