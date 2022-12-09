@@ -50,12 +50,19 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     @Override
     public boolean save(Volunteer volunteer) {
-       String sql = "Insert into Volunteer(volunteer_id,phone_number,address)"+
-               "values(?,?,?,?)";
-       return jdbcTemplate.update(sql,
-               volunteer.getAddress(),
+       String sql = "Insert into volunteer(volunteer_id,phone_number,address, is_Active, status)"+
+               "values(?,?,?,?,?)" +
+               "Returning volunteer_id;";
+
+       Integer volunteerId = jdbcTemplate.queryForObject(sql, Integer.class,
+               volunteer.getVolunteerId(),
                volunteer.getPhoneNumber(),
-               volunteer.getPhoneNumber())==1;
+               volunteer.getAddress(),
+               volunteer.isActive(),"Pending");
+
+      // Volunteer newVolunteer = getVolunteerById(volunteerId);
+
+       return volunteerId > 0;
     }
 
     @Override

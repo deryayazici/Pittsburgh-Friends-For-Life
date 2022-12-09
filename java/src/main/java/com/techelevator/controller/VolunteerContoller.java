@@ -34,9 +34,7 @@ public class VolunteerContoller {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/volunteer", method = RequestMethod.POST)
-    public boolean addVolunteer(@Valid @RequestBody Volunteer volunteer, Principal principal) {
-
-
+    public boolean addVolunteer(@Valid @RequestBody Volunteer volunteer) {
 
         return volunteerDao.save(volunteer);
     }

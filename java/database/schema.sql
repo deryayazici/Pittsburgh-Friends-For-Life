@@ -14,6 +14,7 @@ CREATE TABLE volunteer (
     address varchar(50) not null,
     phone_number varchar(11) not null,
 	is_active boolean not null,
+	status varchar (10) not null,
 
 
     CONSTRAINT pk_volunteer PRIMARY KEY (volunteer_id),
