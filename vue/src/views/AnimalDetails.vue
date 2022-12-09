@@ -1,18 +1,9 @@
 <template>
   <div>
-    <h2>{{ animal.name }}</h2>
-    <div class="animal-section-details">
-      <animal-info v-bind:animalDetail="animal"></animal-info>
-      <div class="animal-section-info">
-        <h2>name:</h2>
-        <p>breed:</p>
-        <p>size:</p>
-        <p>age:</p>
-        <p>temperament:</p>
-        <p>special needs:</p>
-        <p>available for adoption:</p>
-      </div>
-    </div>
+    <animal-info :animal="animal"></animal-info>
+    <!-- <h2>{{animal.name}}</h2> -->
+
+    <animal-info />
   </div>
 </template>
 
@@ -28,18 +19,17 @@ export default {
   },
 
   methods: {
-    displayAnimalDetails() {
+    displayAnimalsDetails() {
       animalService
         .getAnimalById(this.$route.params.animalId)
         .then((response) => {
-          return response.data;
+          this.animal = response.data;
         });
     },
-    created() {
-      this.displayAnimalDetails;
-    },
   },
-
+  created() {
+    this.displayAnimalsDetails();
+  },
   components: {
     AnimalInfo,
   },

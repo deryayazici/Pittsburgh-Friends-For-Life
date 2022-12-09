@@ -7,6 +7,7 @@
             name: 'animal-details',
             params: { animalId: animal.animalId },
           }"
+          v-bind:animal="animal"
         >
           <img v-bind:src="animal.photo" alt="" />
           <h3>{{ animal.name }}</h3>
