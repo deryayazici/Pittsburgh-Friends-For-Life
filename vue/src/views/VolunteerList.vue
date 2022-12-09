@@ -1,6 +1,10 @@
 <template>
+
   <div id="volunteer" class="text-center">
-      <form class="form-volunteer" @submit.prevent="volunteer">
+      <!-- <label for="username">Username</label>
+      <input type="text"> -->
+      <div class="show form" v-show="checkToken">
+    <form class="form-volunteer" @submit.prevent="volunteer"  >
           <h1 class="h3 mb-3 font-weight-normal">Become A Volunteer</h1>
           <section class="sec-volunteer">
            <label for="address" class="volunteer">Address</label>
@@ -21,6 +25,11 @@
            <button class="btn-volunteer" type="submit">Volunteer</button>
        </section>
       </form>
+      </div>
+      <div>
+          <router-link :to="{name: 'register'}" v-show="!checkToken">Please Register Before Volunteering</router-link>
+      </div>
+      
      
   </div>
 </template>
@@ -29,12 +38,13 @@
 // import volunteerService from '@/services/VolunteerService.js'
 export default {
 
-    data() {
-
+    methods: {
 
     },
-
-    method: {
+    computed:{
+        checkToken() {
+            return this.$store.state.user.username != null;
+        }
 
     }
 

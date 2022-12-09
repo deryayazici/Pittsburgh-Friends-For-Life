@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 
 @RestController
@@ -33,7 +34,10 @@ public class VolunteerContoller {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/volunteer", method = RequestMethod.POST)
-    public boolean addVolunteer(@Valid @RequestBody Volunteer volunteer) {
+    public boolean addVolunteer(@Valid @RequestBody Volunteer volunteer, Principal principal) {
+
+
+
         return volunteerDao.save(volunteer);
     }
 
