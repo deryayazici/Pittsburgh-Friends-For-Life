@@ -52,6 +52,19 @@ public class JdbcVolunteerDao implements VolunteerDao {
     }
 
     @Override
+    public List<Volunteer> getApproved() {
+        String sql = "Select * From volunteer Where status = 'Approved';";
+
+        List<Volunteer> volunteers = new ArrayList<>();
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while (results.next()) {
+            volunteers.add(MapRowToVolunteer(results));
+        }
+        return volunteers;
+    }
+
+    @Override
     public Volunteer getVolunteerById(int volunteerID) {
         String sql = "select * from volunteer where volunteer_id=?";
        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,volunteerID);
@@ -101,8 +114,9 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     @Override
     public boolean setVolunteerApproved(int volunteerId) {
-        String sql = "update volunteer set status = 'Approved' where volunteer_id = ?;";
-        return jdbcTemplate.update(sql, volunteerId) == 1;
+        String sql = "update volunteer set status = 'Approved' where volunteer_id = ? " +
+                "update users set role='ROLE_VOLUNTEER' where user_id=?;";
+        return jdbcTemplate.update(sql, volunteerId,volunteerId) == 1;
     }
 
     @Override
