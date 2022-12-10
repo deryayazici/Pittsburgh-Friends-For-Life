@@ -50,4 +50,16 @@ public class VolunteerContoller {
         public List<Volunteer> getPendingVolunteers() {
        return this.volunteerDao.getPending();
     }
+
+    @RequestMapping (path ="/approveVolunteer/{id}", method = RequestMethod.PUT)
+    public boolean approveVolunteer (@RequestBody int volunteerId) {
+       return volunteerDao.setVolunteerApproved(volunteerId);
+    }
+
+    @RequestMapping (path="/approvedVolunteers",method = RequestMethod.GET)
+    public List<Volunteer> getApprovedVolunteers() {
+        return this.volunteerDao.getApproved();
+    }
+
+
 }

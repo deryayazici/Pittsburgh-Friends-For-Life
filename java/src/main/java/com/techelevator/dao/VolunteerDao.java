@@ -19,6 +19,8 @@ public interface VolunteerDao {
     boolean setVolunteerApproved(int volunteerId);
 
     boolean setVolunteerRejected(int volunteerId);
-    public List<Volunteer> getPending();
+
+    List<Volunteer> getPending();
+    List<Volunteer> getApproved();
 
 }

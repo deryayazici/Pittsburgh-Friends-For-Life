@@ -5,7 +5,18 @@ export default {
         return axios.post("/volunteer", volunteer);
       },
 
-      getPendingVolunteers() {
+    getPendingVolunteers() {
         return axios.get('/pendingVolunteers')
-      }
+      },
+    
+    getApprovedVolunteers () {
+        return axios.get ('/approvedVolunteers')
+    },
+    
+    approveVolunteerStatus(volunteerId){
+        return axios.put(`/approveVolunteer/${volunteerId}`,volunteerId)
+    }
+
+
+    
 }
