@@ -5,6 +5,9 @@ import javax.validation.constraints.NotEmpty;
 public class Volunteer {
 
     private int volunteerId;
+
+    private User user;
+
     @NotEmpty
     private String phoneNumber;
     @NotEmpty
@@ -43,6 +46,8 @@ public class Volunteer {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    
 
 
 }

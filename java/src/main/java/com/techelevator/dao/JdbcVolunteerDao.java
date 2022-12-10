@@ -36,6 +36,15 @@ public class JdbcVolunteerDao implements VolunteerDao {
         }
         return volunteers;
     }
+    @Override
+    public List<Volunteer> getPending() {
+        List<Volunteer> volunteers = new ArrayList<>();
+        String sql = "select * from volunteer Where status = 'Pending'";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        return volunteers;
+    }
 
     @Override
     public Volunteer getVolunteerById(int volunteerID) {
@@ -83,5 +92,17 @@ public class JdbcVolunteerDao implements VolunteerDao {
     public boolean setVolunteerActive(int volunteerId) {
         String sql = "update volunteer set is_active = ? where volunteer_id = ?;";
         return jdbcTemplate.update(sql, true, volunteerId) == 1;
+    }
+
+    @Override
+    public boolean setVolunteerApproved(int volunteerId) {
+        String sql = "update volunteer set status = 'Approved' where volunteer_id = ?;";
+        return jdbcTemplate.update(sql, volunteerId) == 1;
+    }
+
+    @Override
+    public boolean setVolunteerRejected(int volunteerId) {
+        String sql = "update volunteer set is_active = 'Rejected' where volunteer_id = ?;";
+        return jdbcTemplate.update(sql, volunteerId) == 1;
     }
 }
