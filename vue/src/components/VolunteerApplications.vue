@@ -1,9 +1,8 @@
 <template>
-  <h2>{{volunteer.name}}</h2>
+  <div></div>
 </template>
 
 <script>
-import volunteerService from '@/services/VolunteerService.js';
 
 export default {
     props: ['volunteer',]

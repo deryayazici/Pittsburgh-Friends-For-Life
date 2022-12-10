@@ -29,8 +29,7 @@
       <div>
           <router-link :to="{name: 'register'}" v-if="!checkToken">Please Register Before Volunteering</router-link>
       </div>
-      
-     
+         
   </div>
 </template>
 
