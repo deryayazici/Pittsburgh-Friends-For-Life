@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 
 @RestController
@@ -43,5 +44,10 @@ public class VolunteerContoller {
     public boolean updateVolunteer(@Valid @RequestBody Volunteer volunteer, @PathVariable int id) {
         return  volunteerDao.update(volunteer);
 
+    }
+
+    @RequestMapping(path="/pendingVolunteers", method=RequestMethod.GET)
+        public List<Volunteer> getPendingVolunteers() {
+       return this.volunteerDao.getPending();
     }
 }

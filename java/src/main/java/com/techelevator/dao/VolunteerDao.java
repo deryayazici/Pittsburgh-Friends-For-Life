@@ -15,4 +15,10 @@ public interface VolunteerDao {
     boolean setVolunteerInactive(int volunteerId);
 
     boolean setVolunteerActive(int volunteerId);
+
+    boolean setVolunteerApproved(int volunteerId);
+
+    boolean setVolunteerRejected(int volunteerId);
+    public List<Volunteer> getPending();
+
 }
