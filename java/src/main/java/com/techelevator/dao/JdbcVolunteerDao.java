@@ -19,6 +19,8 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     private Volunteer MapRowToVolunteer(SqlRowSet results){
         Volunteer volunteer = new Volunteer();
+        volunteer.setFirstName(results.getString("first_name"));
+        volunteer.setLastName(results.getString("last_name"));
         volunteer.setAddress(results.getString("address"));
         volunteer.setPhoneNumber(results.getString("phone_number"));
         volunteer.setVolunteerId(results.getInt("volunteer_id"));
@@ -36,6 +38,31 @@ public class JdbcVolunteerDao implements VolunteerDao {
         }
         return volunteers;
     }
+    @Override
+    public List<Volunteer> getPending() {
+        List<Volunteer> volunteers = new ArrayList<>();
+        String sql = "select * from volunteer Where status = 'Pending'";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+     while (results.next()) {
+      volunteers.add(MapRowToVolunteer(results));
+  }
+        return volunteers;
+    }
+
+    @Override
+    public List<Volunteer> getApproved() {
+        String sql = "Select * From volunteer Where status = 'Approved';";
+
+        List<Volunteer> volunteers = new ArrayList<>();
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while (results.next()) {
+            volunteers.add(MapRowToVolunteer(results));
+        }
+        return volunteers;
+    }
 
     @Override
     public Volunteer getVolunteerById(int volunteerID) {
@@ -50,20 +77,27 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     @Override
     public boolean save(Volunteer volunteer) {
-       String sql = "Insert into Volunteer(volunteer_id,phone_number,address)"+
-               "values(?,?,?,?)";
-       return jdbcTemplate.update(sql,
-               volunteer.getAddress(),
+       String sql = "Insert into volunteer(volunteer_id,first_name, last_name,phone_number,address, is_Active, status)"+
+               "values(?,?,?,?,?,?,?)" +
+               "Returning volunteer_id;";
+
+       Integer volunteerId = jdbcTemplate.queryForObject(sql, Integer.class,
+               volunteer.getVolunteerId(),
+               volunteer.getFirstName(),
+               volunteer.getLastName(),
                volunteer.getPhoneNumber(),
-               volunteer.getPhoneNumber())==1;
+               volunteer.getAddress(),
+               volunteer.isActive(),"Pending");
+
+       return volunteerId > 0;
     }
 
     @Override
     public boolean update(Volunteer volunteer) {
         String sql = "update Volunteer "+
-                "set Phone_number = ?, address = ?" +
+                "set first_name=?, last_name=?, Phone_number = ?, address = ?" +
                 "where volunteer_id = ?;";
-        return jdbcTemplate.update(sql,volunteer.getAddress(),volunteer.getPhoneNumber(),volunteer.getVolunteerId())==1;
+        return jdbcTemplate.update(sql,volunteer.getFirstName(), volunteer.getLastName(), volunteer.getPhoneNumber(),volunteer.getAddress(),volunteer.getVolunteerId())==1;
     }
 
     @Override
@@ -76,5 +110,18 @@ public class JdbcVolunteerDao implements VolunteerDao {
     public boolean setVolunteerActive(int volunteerId) {
         String sql = "update volunteer set is_active = ? where volunteer_id = ?;";
         return jdbcTemplate.update(sql, true, volunteerId) == 1;
+    }
+
+    @Override
+    public boolean setVolunteerApproved(int volunteerId) {
+        String sql = "update volunteer set status = 'Approved' where volunteer_id = ? " +
+                "update users set role='ROLE_VOLUNTEER' where user_id=?;";
+        return jdbcTemplate.update(sql, volunteerId,volunteerId) == 1;
+    }
+
+    @Override
+    public boolean setVolunteerRejected(int volunteerId) {
+        String sql = "update volunteer set status = 'Rejected' where volunteer_id = ?;";
+        return jdbcTemplate.update(sql, volunteerId) == 1;
     }
 }

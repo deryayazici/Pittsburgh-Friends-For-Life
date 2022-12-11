@@ -9,6 +9,7 @@ import AnimalDetails from "../views/AnimalDetails.vue";
 import VolunteerList from "../views/VolunteerList.vue";
 import AnimalAdopter from "../views/AnimalAdopter.vue";
 import ShelterDonation from "../views/ShelterDonation.vue";
+import UserPage from '../views/UserPage.vue';
 
 
 Vue.use(Router);
@@ -35,12 +36,17 @@ const router = new Router({
       }
     },
     {
-      path:"/adopter",
+      path:"/adopt",
       name:"adopt",
       component:AnimalAdopter,
       meta: {
         requiresAuth: false,
       },
+    },
+    {
+      path:"/settings",
+      name:"settings",
+      component:UserPage,
     },
     {
       path: "/volunteer",
@@ -51,7 +57,7 @@ const router = new Router({
       },
     },
     {
-      path: "/:id",
+      path: "/animals/:animalId",
       name: "animal-details",
       component: AnimalDetails,
       meta: {

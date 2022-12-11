@@ -16,7 +16,7 @@
       >&nbsp;|&nbsp;
       <router-link :to="{ name: 'volunteer' }">Volunteer</router-link
       >&nbsp;|&nbsp;
-      <router-link :to="{ name: 'adopt' }">Adopt</router-link>&nbsp;|&nbsp;
+      <router-link :to="{ name: 'settings' }">Settings</router-link>&nbsp;|&nbsp;
       <router-link :to="{ name: 'donation' }">Donate</router-link>
     </div>
     <router-view />

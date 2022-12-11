@@ -1,23 +1,37 @@
 <template>
-  <section class="picture">
-    <div class="pic-container">
-      <router-link to="/animals/${id}">
-        <img src="../../catPic.jpg" alt="" />
-      </router-link>
-      <h3>Fiddles</h3>
-      <p>4 years old</p>
-      <p>cute cuddly cat</p>
-      <span><i class="fa-solid fa-cat"></i></span>
-    </div>
-  </section>
+  <div>
+    <section class="section">
+      <article class="picture">
+        <div class="pic-container">
+          <img v-bind:src="animal.photo" alt=""/>
+        </div>
+      </article>
+
+      <article class="information">
+        <h2>Type: {{ animal.type }}</h2>
+        <h2>Name: {{ animal.name }}</h2>
+        <h2>Breed: {{ animal.breed }}</h2>
+        <h2>Age: {{ animal.age }}</h2>
+        <h2>Temperament: {{ animal.temperament }}</h2>
+        <h2>Special Needs: {{ animal.specialNeeds }}</h2>
+      </article>
+    </section>
+  </div>
 </template>
 
 <script>
 export default {
+  props: ["animal"],
+
   data() {
     return {};
   },
 };
 </script>
 
-<style></style>
+<style>
+.section {
+  display: flex;
+}
+
+</style>

@@ -19,7 +19,21 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    animals:[],
+    newAnimal:{
+      id:0,
+      type:'',
+      breed:'',
+      age:0,
+      size:'',
+      temperament:'',
+      name:'',
+      specialNeeds:false,
+      photo:'',
+      isAdopted:false   
+    },
+     
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +51,12 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
-    }
-  }
+    },
+    SET_ANIMAL(state, data) {
+      state.animals = data;
+    },
+  },
+  created() {
+   this.displayAnimals()
+    },
 })
