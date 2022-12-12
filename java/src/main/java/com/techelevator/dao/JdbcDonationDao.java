@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 @Component
 public class JdbcDonationDao implements DonationDao{
 
@@ -42,16 +44,14 @@ public class JdbcDonationDao implements DonationDao{
 
     @Override
     public Donation AddDonation(Donation donation) {
-       String sql = "insert into donation(first_name,last_name,description,donation_date)" +
-               " values(?,?,?,?)" +   " RETURNING donation_id";
+       String sql = "insert into donation(donator_id,first_name,last_name,description,donation_date)" +
+               " values(?,?,?,?,?)" +   " RETURNING donation_id";
        Integer donationId = jdbcTemplate.queryForObject(sql,Integer.class,
+                donation.getDonator_id(),
                 donation.getFirst_name(),
                 donation.getLast_name(),
                 donation.getDescription(),
-               donation.getDonation_date());
-
-
-       donation.setDonator_id(donationId);
+                donation.getDonation_date());
        return donation;
     }
 
@@ -61,7 +61,7 @@ public class JdbcDonationDao implements DonationDao{
         donation.setFirst_name(result.getString("First_name"));
         donation.setLast_name(result.getString("last_name"));
         donation.setDescription(result.getString("description"));
-        donation.setDonation_date(result.getDate("donation_date").toLocalDate());
+        donation.setDonation_date(Objects.requireNonNull(result.getDate("donation_date")).toLocalDate());
 
         return donation;
     }
