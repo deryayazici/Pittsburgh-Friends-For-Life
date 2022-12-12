@@ -19,6 +19,7 @@
       <router-link :to="{ name: 'settings' }">Settings</router-link>&nbsp;|&nbsp;
       <router-link :to="{ name: 'donation' }">Donate</router-link>
     </div>
+    
     <router-view />
   </div>
 </template>
