@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, animal, availability,volunteer,adopter,questionnaire;
+DROP TABLE IF EXISTS users, animal, availability,volunteer,adopter,questionnaire,donation;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -89,6 +89,21 @@ CREATE TABLE questionnaire (
 	CONSTRAINT fk_questionnaire_adopter FOREIGN KEY (adopter_id) references adopter (adopter_id)
 );
 
+ CREATE TABLE donation (
+
+ donation_id serial,
+ donator_id int,
+ donation_date DATE not null,
+ first_name varchar(50) not null,
+ last_name varchar(50) not null,
+ description varchar(2000) not null,
+
+ CONSTRAINT pk_donation PRIMARY KEY(donation_id),
+ CONSTRAINT fk_donation_user FOREIGN KEY(donator_id) references users(user_id)
+
+
+ );
+
 COMMIT TRANSACTION;
 
 INSERT INTO users (username,password_hash,role)
@@ -128,3 +143,6 @@ INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is
 VALUES ('dog','mixed',3,'Playful','Small','Aiden',false,'https://i.imgur.com/t5GL2tW.jpg',true);
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
 VALUES ('dog','mixed',4,'Friendly','Medium','Daisy',false,'https://i.imgur.com/gkcz5Ep.jpg',true);
+
+insert into donation (donation_id,donation_date, first_name,last_name,description)
+values(default,'01-01-2022','Bibek','siwakoti','i would like to donate');
