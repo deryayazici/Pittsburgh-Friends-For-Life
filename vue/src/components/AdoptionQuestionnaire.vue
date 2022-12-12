@@ -35,18 +35,18 @@
         <input type="text" v-model="questionnaire.vet" />
         <label for="disabled" class="questionnaire">Disabled</label>
         <input type="checkbox" v-model="questionnaire.disabled" />
-        <label for="reference" class="questionnaire">First reference</label>
+        <label for="referenceOne" class="questionnaire">First reference</label>
         <input type="text" v-model="questionnaire.referenceOne" />
-        <label for="reference-contact" class="questionnaire"
+        <label for="reference-one-contact" class="questionnaire"
           >First reference contact</label
         >
         <input type="text" v-model="questionnaire.referenceOneContact" />
-        <label for="reference" class="questionnaire">Second reference</label>
+        <label for="referenceTwo" class="questionnaire">Second reference</label>
         <input type="text" v-model="questionnaire.referenceTwo" />
-        <label for="reference-contact" class="questionnaire"
+        <label for="reference-two-contact" class="questionnaire"
           >Second reference contact</label
         >
-        <input type="text" v-model="questionnaire.referenceOneContact" />
+        <input type="text" v-model="questionnaire.referenceTwoContact" />
         <label for="phone-number" class="volunteer">Phone Number</label>
         <input type="text" v-model="questionnaire.phoneNumber" />
         <button class="btn-adopt" type="submit" @click.prevent="save">Submit</button>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import adopterService from "@/services/AdopterService.js";
 export default {
   data() {
     return {
@@ -84,7 +85,19 @@ export default {
   name: "adoption-questionnaire",
   methods: {
     save() {
-      
+
+       this.questionnaire.animal_id = this.$router.params.animalId;
+       this.questionnaire.adopter_id = this.$store.state.user.id;
+      adopterService.addQuestionnaire(this.questionnaire)
+      .then (response => {
+       if(response.status === 201) {
+      this.$router.push('/');
+                
+      } 
+     }) 
+
+
+
     },
   },
 };

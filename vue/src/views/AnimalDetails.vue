@@ -3,8 +3,8 @@
     <animal-info :animal="animal">
       
     </animal-info>
-    <button class="showForm">Adopt</button>
-    <adoption-questionnaire></adoption-questionnaire>
+    <button class="showForm" @click ="showForm">Adopt</button>
+    <adoption-questionnaire v-if="showQuestionnaire"></adoption-questionnaire>
 
     
   </div>
@@ -15,9 +15,11 @@ import AnimalInfo from "@/components/AnimalInfo.vue";
 import animalService from "@/services/AnimalService.js";
 import AdoptionQuestionnaire from "@/components/AdoptionQuestionnaire.vue";
 
+
 export default {
   data() {
     return {
+      showQuestionnaire:false,
       animal: {},
       AdoptionQuestionnaire: {
         questionnaire_id: 0,
@@ -49,6 +51,11 @@ export default {
           this.animal = response.data;
         });
     },
+    showForm() {
+      this.showQuestionnaire = !this.showQuestionnaire;
+
+      
+    }
   },
   created() {
     this.displayAnimalsDetails();
@@ -57,6 +64,8 @@ export default {
     AnimalInfo,
     AdoptionQuestionnaire,
   },
+
+ 
 };
 </script>
 
