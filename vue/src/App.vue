@@ -20,10 +20,19 @@
       >&nbsp;|&nbsp;
       <router-link :to="{ name: 'donation' }">Donate</router-link>
     </div>
-    
+    <random-cat></random-cat>
+
     <router-view />
   </div>
 </template>
+<script>
+import RandomCat from "@/components/RandomCat.vue";
+export default {
+  components: {
+    RandomCat,
+  },
+};
+</script>
 
 <style>
 body {

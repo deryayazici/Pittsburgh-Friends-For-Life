@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div id="grossVanillaJS">
-      <!--<img :src="cat" alt="" />-->
-      {{ cat }}
-    </div>
+    <p class="cat-fact">{{ cat }}</p>
   </div>
 </template>
 
@@ -13,7 +10,6 @@ export default {
   name: "random-cat",
   data() {
     return {
-      cats: [],
       cat: "",
     };
   },
@@ -21,7 +17,7 @@ export default {
   created() {
     catService.getCat().then((resp) => {
       console.log(resp.data);
-      this.cat = new Image(resp.data);
+      this.cat = resp.data.data[0];
 
       //this.cat = resp.data;
     });
@@ -29,4 +25,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.cat-fact {
+  text-align: center;
+  font-size: 12px;
+  color: #3cf157;
+  margin-bottom: 2rem;
+}
+</style>
