@@ -123,3 +123,8 @@ VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https:/
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
 VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','mixed',3,'Playful','Small','Aiden',false,'https://i.imgur.com/t5GL2tW.jpg',true);
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','mixed',4,'Friendly','Medium','Daisy',false,'https://i.imgur.com/gkcz5Ep.jpg',true);

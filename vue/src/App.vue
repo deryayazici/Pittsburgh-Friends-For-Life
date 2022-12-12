@@ -20,6 +20,7 @@
       >&nbsp;|&nbsp;
       <router-link :to="{ name: 'donation' }">Donate</router-link>
     </div>
+    
     <router-view />
   </div>
 </template>
