@@ -1,9 +1,14 @@
 package com.techelevator.model;
 
+import org.springframework.data.mapping.model.Property;
+
 public class Questionnaire {
+
+
     private int questionnaire_id;
     private String first_name;
     private String last_name;
+    private String phone_number;
     private int number_children;
     private String housing_type;
     private boolean fenced_yard;
@@ -18,6 +23,14 @@ public class Questionnaire {
     private String reference_one_contact;
     private String reference_two;
     private String reference_two_contact;
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
 
     public int getQuestionnaire_id() {
         return questionnaire_id;

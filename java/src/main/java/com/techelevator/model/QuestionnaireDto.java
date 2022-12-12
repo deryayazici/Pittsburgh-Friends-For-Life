@@ -9,6 +9,17 @@ public class QuestionnaireDto {
     @NotEmpty
     private String last_name;
     @NotEmpty
+    private String phone_number;
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    @NotEmpty
     private int number_children;
     @NotEmpty
     private String housing_type;

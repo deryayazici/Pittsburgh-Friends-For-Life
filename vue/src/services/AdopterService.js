@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
     addQuestionnaire(adopterId) {
-        return axios.post(`/adopter/${id}`, adopterId);
+        return axios.post(`/adopter/${adopterId}`, adopterId);
       },
 
     addAdopter(adopter) {

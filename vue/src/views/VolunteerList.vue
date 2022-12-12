@@ -29,7 +29,7 @@
 </template>
 
 <script>
- import volunteerService from '@/services/VolunteerService.js'
+import volunteerService from '@/services/VolunteerService.js'
 export default {
     data(){
        return {

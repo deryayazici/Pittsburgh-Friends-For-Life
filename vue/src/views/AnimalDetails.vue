@@ -1,14 +1,12 @@
 <template>
   <div>
-    <animal-info :animal="animal"></animal-info>
-    <!-- <h2>{{animal.name}}</h2> -->
-<<<<<<< HEAD
-     <animal-info />
-   <adoption-questionnaire/>
-=======
+    <animal-info :animal="animal">
+      
+    </animal-info>
+    <button class="showForm">Adopt</button>
+    <adoption-questionnaire></adoption-questionnaire>
 
-    <animal-info />
->>>>>>> 0642fa7189eba22524c73e7de24b463aed1a2c38
+    
   </div>
 </template>
 
@@ -21,6 +19,25 @@ export default {
   data() {
     return {
       animal: {},
+      AdoptionQuestionnaire: {
+        questionnaire_id: 0,
+        first_name: "",
+        last_name: "",
+        number_children: 0,
+        housing_type: "",
+        fenced_yard: false,
+        walker: "",
+        years_of_pet_experience: 0,
+        renting_or_owning: "",
+        vet: "",
+        disabled: false,
+        animal_id: this.$router.animalId,
+        adopter_id: this.$store.state.user.id,
+        reference_one: "",
+        reference_one_contact: "",
+        reference_two: "",
+        reference_two_contact: "",
+      },
     };
   },
 
@@ -38,14 +55,7 @@ export default {
   },
   components: {
     AnimalInfo,
-<<<<<<< HEAD
-    AdoptionQuestionnaire
-  }
-}
-</script>
-
-<style>
-=======
+    AdoptionQuestionnaire,
   },
 };
 </script>
@@ -54,5 +64,4 @@ export default {
 .animal-section-details {
   display: flex;
 }
->>>>>>> 0642fa7189eba22524c73e7de24b463aed1a2c38
 </style>

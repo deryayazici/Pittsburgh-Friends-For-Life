@@ -24,6 +24,7 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
         questionnaire.setQuestionnaire_id(results.getInt("questionnaire_id"));
         questionnaire.setFirst_name(results.getString("first_name"));
         questionnaire.setLast_name(results.getString("last_name"));
+        questionnaire.setPhone_number(results.getString("phone_number"));
         questionnaire.setNumber_children(results.getInt("number_children"));
         questionnaire.setHousing_type(results.getString("housing_type"));
         questionnaire.setFenced_yard(results.getBoolean("fenced_yard"));
@@ -93,11 +94,12 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
 
     @Override
     public boolean save(QuestionnaireDto questionnaireDto) {
-        String sql = "INSERT INTO questionnaire (questionnaire_id,first_name,last_name,number_children,housing_type,fenced_yard,walker,years_of_pet_experience,renting_or_owning,vet,disabled,animal_id,adopter_id,reference_one,reference_one_contact,reference_two,reference_two_contact)\n" +
-                "VALUES (default,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO questionnaire (questionnaire_id,first_name,last_name,phone_number,number_children,housing_type,fenced_yard,walker,years_of_pet_experience,renting_or_owning,vet,disabled,animal_id,adopter_id,reference_one,reference_one_contact,reference_two,reference_two_contact)\n" +
+                "VALUES (default,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         return jdbcTemplate.update(sql,
                 questionnaireDto.getFirst_name(),
                 questionnaireDto.getLast_name(),
+                questionnaireDto.getPhone_number(),
                 questionnaireDto.getNumber_children(),
                 questionnaireDto.getHousing_type(),
                 questionnaireDto.isFenced_yard(),
