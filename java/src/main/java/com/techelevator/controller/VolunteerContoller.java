@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.List;
 
 
 @RestController
@@ -34,6 +36,7 @@ public class VolunteerContoller {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/volunteer", method = RequestMethod.POST)
     public boolean addVolunteer(@Valid @RequestBody Volunteer volunteer) {
+
         return volunteerDao.save(volunteer);
     }
 
@@ -42,4 +45,21 @@ public class VolunteerContoller {
         return  volunteerDao.update(volunteer);
 
     }
+
+    @RequestMapping(path="/pendingVolunteers", method=RequestMethod.GET)
+        public List<Volunteer> getPendingVolunteers() {
+       return this.volunteerDao.getPending();
+    }
+
+    @RequestMapping (path ="/approveVolunteer/{id}", method = RequestMethod.PUT)
+    public boolean approveVolunteer (@RequestBody int volunteerId) {
+       return volunteerDao.setVolunteerApproved(volunteerId);
+    }
+
+    @RequestMapping (path="/approvedVolunteers",method = RequestMethod.GET)
+    public List<Volunteer> getApprovedVolunteers() {
+        return this.volunteerDao.getApproved();
+    }
+
+
 }

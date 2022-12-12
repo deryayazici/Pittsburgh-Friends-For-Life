@@ -11,9 +11,12 @@ CREATE TABLE users (
 );
 CREATE TABLE volunteer (
     volunteer_id int,
+    first_name varchar (50) not null,
+    last_name varchar (50) not null,
     address varchar(50) not null,
     phone_number varchar(11) not null,
 	is_active boolean not null,
+	status varchar (10) not null,
 
 
     CONSTRAINT pk_volunteer PRIMARY KEY (volunteer_id),
@@ -87,17 +90,12 @@ CREATE TABLE questionnaire (
 );
 
 COMMIT TRANSACTION;
---ROLLBACK;
-
---SELECT * FROM availability;
-
---SELECT * FROM animal;
 
 INSERT INTO users (username,password_hash,role)
 VALUES('testuser','123456789','user');
 
-INSERT INTO volunteer ( volunteer_id,address,phone_number,is_active)
-VALUES ((SELECT user_id FROM users WHERE user_id = 1 ),'address','412412412',true);
+INSERT INTO volunteer ( volunteer_id,first_name, last_name,address,phone_number,is_active)
+VALUES ((SELECT user_id FROM users WHERE user_id = 1 ),'test','test','address','412412412',true);
 
 INSERT INTO availability (volunteer_id,available_date,available_time)
 VALUES ((SELECT volunteer_id FROM volunteer WHERE volunteer_id =1),'2022-12-12','afternoon');
