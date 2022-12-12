@@ -128,19 +128,20 @@ INSERT INTO questionnaire (first_name,last_name,number_children,housing_type,fen
 VALUES ('Lucas','Rover',0,'House',false,'Lucas',20,'own','vet',false,1,1,'referenceOne','contactOne','referenceTwo','contactTwo');
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+VALUES ('Cat','Tabby',4,'Sly','Medium','Elon',false,'https://i.imgur.com/AD3MbBi.jpeg',true);
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+VALUES ('Cat','American Tabby',5,'Delightful','large','Felix',false,'https://i.imgur.com/wYTCtRu.jpeg',true);
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+VALUES ('bunny','American Bunny',12,'Nuts','Medium','Sprinkles',false,'https://i.imgur.com/2Qg5o0N.jpeg',true);
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+VALUES ('ferret','unknown',7,'Curious','Small','Winston',false,'https://i.imgur.com/vqtP2Jm.jpeg',true);
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','mixed',3,'Playful','Small','Aiden',false,'https://i.imgur.com/t5GL2tW.jpg',true);
+VALUES ('bunny','unknown',2,'Anxious','Small','Roger',false,'https://i.imgur.com/jydvLf6.jpeg',true);
+
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
 VALUES ('dog','mixed',4,'Friendly','Medium','Daisy',false,'https://i.imgur.com/gkcz5Ep.jpg',true);
 
