@@ -42,9 +42,7 @@ export default {
 
   min-height: 100vh;
 }
-li {
-  list-style-type: none;
-}
+
 img {
   display: block;
   width: 100%;
@@ -66,7 +64,7 @@ img {
 }
 
 @media screen and (min-width: 500px) {
-  ul {
+  .home {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-width: 90vw;
@@ -78,7 +76,7 @@ img {
     height: 300px;
   }
   @media screen and (min-width: 768px) {
-    ul {
+    .home {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }

@@ -16,7 +16,8 @@
       >&nbsp;|&nbsp;
       <router-link :to="{ name: 'volunteer' }">Volunteer</router-link
       >&nbsp;|&nbsp;
-      <router-link :to="{ name: 'settings' }">Settings</router-link>&nbsp;|&nbsp;
+      <router-link :to="{ name: 'settings' }">Settings</router-link
+      >&nbsp;|&nbsp;
       <router-link :to="{ name: 'donation' }">Donate</router-link>
     </div>
     <router-view />
@@ -27,11 +28,14 @@
 body {
   background-color: #fbfbbb;
 }
+
 #nav {
   padding: 1rem 0 2.5rem 1rem;
   display: flex;
   justify-content: space-around;
+  font-size: 1.5rem;
 }
+
 .section-title {
   padding: 4rem 0 1rem;
   width: 90vw;

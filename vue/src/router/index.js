@@ -10,6 +10,7 @@ import VolunteerList from "../views/VolunteerList.vue";
 import AnimalAdopter from "../views/AnimalAdopter.vue";
 import ShelterDonation from "../views/ShelterDonation.vue";
 import UserPage from "../views/UserPage.vue";
+import RandomCat from "../components/RandomCat.vue";
 
 Vue.use(Router);
 
