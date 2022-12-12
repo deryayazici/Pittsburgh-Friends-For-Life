@@ -26,9 +26,10 @@
             <input
               class="donate-control"
               type="text"
-              placeholder="first name"
+              placeholder="first name" v-model="donation.firstName"
             />
-            <input class="donate-control" type="text" placeholder="last name" />
+            <input class="donate-control" type="text" placeholder="last name" v-model="donation.lastName"/>
+            <input class="donate-control" type="date" v-model="donation.date"/>
             <textarea
               class="donate-control"
               placeholder="description of items to donate..."
@@ -36,8 +37,10 @@
               id=""
               cols="30"
               rows="10"
+              v-model="donation.description"
             >
             </textarea>
+            <button class="donate-control" type="submit" v-bind="submitDonation">Submit</button>
           </form>
         </div>
       </div>
@@ -46,7 +49,31 @@
 </template>
 
 <script>
-export default {};
+import donationService from "@/services/DonationService.js";
+export default {
+  name: "donation",
+  data() {
+    return{
+    donation: {
+      donatorId: this.$store.state.user.id,
+      firstName: "",
+      lastName: "",
+      date: "",
+      description: "",
+      },
+    }
+  },
+  methods: {
+    submitDonation() {
+    donationService.submitDonation(this.donation).then((response) => {
+      if (response.status === 201) {
+        // this.$router.push("/");
+      }
+    }) 
+    },
+  },
+};
+
 </script>
 
 <style>

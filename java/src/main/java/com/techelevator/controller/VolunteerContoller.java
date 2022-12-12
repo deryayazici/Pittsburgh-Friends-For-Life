@@ -1,7 +1,6 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.VolunteerDao;
-import com.techelevator.model.Adopter;
 import com.techelevator.model.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
