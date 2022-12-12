@@ -1,87 +1,112 @@
 <template>
-
   <div id="volunteer" class="text-center">
-      <!-- <label for="username">Username</label>
+    <!-- <label for="username">Username</label>
       <input type="text"> -->
-      <div class="show form" v-if="checkToken">
-    <form class="form-volunteer" @submit.prevent="save"  >
-          <h1 class="h3 mb-3 font-weight-normal">Become A Volunteer</h1>
-          <section class="sec-volunteer">
-           <label for="first-name" class="firstName">First Name</label>
-           <input type="text" v-model="volunteer.firstName">
-           <label for="last-name" class="lastName">Last Name</label>
-           <input type="text" v-model="volunteer.lastName">
-           <label for="address" class="volunteer">Address</label>
-           <input type="text" v-model="volunteer.address">
-           <label for="phone-number" class="volunteer">Phone Number</label>
-           <input type="text" v-model="volunteer.phoneNumber">
-           <!-- <label for="availabilityDate">Available Dates </label>
+    <div class="show form" v-if="checkToken">
+      <form class="form-volunteer" @submit.prevent="save">
+        <h1 class="h3 mb-3 font-weight-normal vol-title">Become A Volunteer</h1>
+        <section class="sec-volunteer">
+          <div class="form-row">
+            <label for="first-name" class="firstName">First Name</label>
+            <input
+              class="form-control"
+              type="text"
+              v-model="volunteer.firstName"
+            />
+          </div>
+          <div class="form-row">
+            <label for="last-name" class="lastName">Last Name</label>
+            <input
+              class="form-control"
+              type="text"
+              v-model="volunteer.lastName"
+            />
+          </div>
+          <div class="form-row">
+            <label for="address" class="volunteer">Address</label>
+            <input
+              class="form-control"
+              type="text"
+              v-model="volunteer.address"
+            />
+          </div>
+          <div class="form-row">
+            <label for="phone-number" class="volunteer">Phone Number</label>
+            <input
+              class="form-control"
+              type="text"
+              v-model="volunteer.phoneNumber"
+            />
+          </div>
+
+          <!-- <label for="availabilityDate">Available Dates </label>
            <input type="date" id="date" name="date" class="volunteer" v-> -->
-           <!-- <select name="time" id="time" class="volunteer">
+          <!-- <select name="time" id="time" class="volunteer">
                 <option value="morning">Morning</option>
                 <option value="afternoon">Afternoon</option>
                 <option value="Evening">Evening</option>
             </select> -->
-           <div class="active">
-           <label for="is-active" class="volunteer">Active</label>
-           <input type="checkbox" v-model="volunteer.isActive"> <!-- when checked, isActive will be true -->
-           </div>
-           <button class="btn-volunteer" type="submit" v-bind="save">Volunteer</button>
-       </section>
+          <div class="active">
+            <div class="form-row">
+              <label for="is-active" class="volunteer">Active</label>
+              <input type="checkbox" v-model="volunteer.isActive" />
+            </div>
+
+            <!-- when checked, isActive will be true -->
+          </div>
+          <button class="btn-volunteer" type="submit" v-bind="save">
+            Volunteer
+          </button>
+        </section>
       </form>
-      </div>
-      <div>
-          <router-link :to="{name: 'register'}" v-if="!checkToken">Please Register Before Volunteering</router-link>
-      </div>
-         
+    </div>
+    <div class="register-before">
+      <router-link :to="{ name: 'register' }" v-if="!checkToken"
+        >Please Register Before Volunteering</router-link
+      >
+    </div>
   </div>
 </template>
 
 <script>
- import volunteerService from '@/services/VolunteerService.js'
+import volunteerService from "@/services/VolunteerService.js";
 export default {
-    data(){
-       return {
-           volunteer:{
-               volunteerId:this.getUserId,
-               firstName: '',
-               lastName: '',
-               address:'',
-               phoneNumber:'',
-               isActive:false,
-               status:'Pending'
-           }
-    }
+  data() {
+    return {
+      volunteer: {
+        volunteerId: this.getUserId,
+        firstName: "",
+        lastName: "",
+        address: "",
+        phoneNumber: "",
+        isActive: false,
+        status: "Pending",
+      },
+    };
+  },
+
+  methods: {
+    save() {
+      this.volunteer.volunteerId = this.getUserId;
+
+      volunteerService.addVolunteer(this.volunteer).then((response) => {
+        if (response.status === 201) {
+          this.$router.push("/");
+        }
+      });
+    },
+  },
+
+  computed: {
+    checkToken() {
+      return this.$store.state.user.username != null;
     },
 
-    methods: {
-        save() {
-            this.volunteer.volunteerId = this.getUserId;
-
-            volunteerService.addVolunteer(this.volunteer)
-            .then (response => {
-                if(response.status === 201) {
-               this.$router.push('/');
-                
-            } 
-            })    
-        },
-
+    getUserId() {
+      return this.$store.state.user.id;
     },
-    
-    computed:{
-        checkToken() {
-            return this.$store.state.user.username != null;
-        },
-
-        getUserId() {
-         return this.$store.state.user.id;
-        },
-
-    }
-
-
-}
+  },
+};
 </script>
 
 <style>
@@ -101,12 +126,17 @@ html {
   font-family: "Limelight", cursive;
   min-height: 100vh;
 }
+.register-before {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
 .text-center {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: start;
-  background-color: #fffffe;
+  background-color: #fbfbbb;
 }
 .form-volunteer {
   padding: 30px 40px;
@@ -116,18 +146,23 @@ html {
   background-color: #fffffe;
 }
 
+.vol-title {
+  margin-bottom: 30px;
+}
+
 .sec-volunteer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .volunteer {
-     display: block;
-     margin-top: 10px;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .btn-volunteer {
-     margin-top: 1rem;
+  margin-top: 1rem;
   display: block;
   width: 100%;
   border: 2px solid transparent;
@@ -138,6 +173,4 @@ html {
   font-weight: bold;
   cursor: pointer;
 }
-
-
 </style>
