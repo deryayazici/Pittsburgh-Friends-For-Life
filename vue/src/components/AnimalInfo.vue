@@ -3,7 +3,7 @@
     <section class="section">
       <article class="picture">
         <div class="pic-container">
-          <img v-bind:src="animal.photo" alt=""/>
+          <img v-bind:src="animal.photo" alt="" />
         </div>
       </article>
 
@@ -33,5 +33,4 @@ export default {
 .section {
   display: flex;
 }
-
 </style>

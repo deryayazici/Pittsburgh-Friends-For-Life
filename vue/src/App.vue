@@ -16,7 +16,8 @@
       >&nbsp;|&nbsp;
       <router-link :to="{ name: 'volunteer' }">Volunteer</router-link
       >&nbsp;|&nbsp;
-      <router-link :to="{ name: 'settings' }">Settings</router-link>&nbsp;|&nbsp;
+      <router-link :to="{ name: 'settings' }">Settings</router-link
+      >&nbsp;|&nbsp;
       <router-link :to="{ name: 'donation' }">Donate</router-link>
     </div>
     <router-view />
@@ -25,13 +26,16 @@
 
 <style>
 body {
-  background-color: #fffffe;
+  background-color: #fbfbbb;
 }
+
 #nav {
   padding: 1rem 0 2.5rem 1rem;
   display: flex;
   justify-content: space-around;
+  font-size: 1.5rem;
 }
+
 .section-title {
   padding: 4rem 0 1rem;
   width: 90vw;
@@ -44,7 +48,7 @@ body {
   color: #fffffe;
   /* border: 5px solid #ff8ba7; */
   padding: 10px 0;
-  background-color: #3cf157;
+  background-color: var(--clr-1);
   border-radius: 4px;
 }
 </style>
