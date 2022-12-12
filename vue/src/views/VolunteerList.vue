@@ -7,6 +7,10 @@
     <form class="form-volunteer" @submit.prevent="save"  >
           <h1 class="h3 mb-3 font-weight-normal">Become A Volunteer</h1>
           <section class="sec-volunteer">
+           <label for="first-name" class="firstName">First Name</label>
+           <input type="text" v-model="volunteer.firstName">
+           <label for="last-name" class="lastName">Last Name</label>
+           <input type="text" v-model="volunteer.lastName">
            <label for="address" class="volunteer">Address</label>
            <input type="text" v-model="volunteer.address">
            <label for="phone-number" class="volunteer">Phone Number</label>
@@ -40,6 +44,8 @@ export default {
        return {
            volunteer:{
                volunteerId:this.getUserId,
+               firstName: '',
+               lastName: '',
                address:'',
                phoneNumber:'',
                isActive:false,
