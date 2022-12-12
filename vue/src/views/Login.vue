@@ -74,3 +74,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.text-center {
+  background-color: #fbfbbb;
+}
+</style>
