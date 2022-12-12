@@ -31,7 +31,7 @@ public class QuestionnaireController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/adopt/list", method = RequestMethod.PUT)
+    @RequestMapping(value = "/adopt/list", method = RequestMethod.GET)
     public void listQuestionnaires() {
         try {
             questionnaireDao.list();

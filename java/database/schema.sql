@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, animal, availability,volunteer,adopter,questionnaire;
+DROP TABLE IF EXISTS users, animal, availability,volunteer,adopter,questionnaire,donation;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -90,6 +90,21 @@ CREATE TABLE questionnaire (
 	CONSTRAINT fk_questionnaire_adopter FOREIGN KEY (adopter_id) references adopter (adopter_id)
 );
 
+ CREATE TABLE donation (
+
+ donation_id serial,
+ donator_id int,
+ donation_date DATE not null,
+ first_name varchar(50) not null,
+ last_name varchar(50) not null,
+ description varchar(2000) not null,
+
+ CONSTRAINT pk_donation PRIMARY KEY(donation_id),
+ CONSTRAINT fk_donation_user FOREIGN KEY(donator_id) references users(user_id)
+
+
+ );
+
 COMMIT TRANSACTION;
 
 INSERT INTO users (username,password_hash,role)
@@ -114,13 +129,22 @@ INSERT INTO questionnaire (first_name,last_name,number_children,housing_type,fen
 VALUES ('Lucas','Rover',0,'House',false,'Lucas',20,'own','vet',false,1,1,'referenceOne','contactOne','referenceTwo','contactTwo');
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+VALUES ('Cat','Tabby',4,'Sly','Medium','Elon',false,'https://i.imgur.com/AD3MbBi.jpeg',true);
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+VALUES ('Cat','American Tabby',5,'Delightful','large','Felix',false,'https://i.imgur.com/wYTCtRu.jpeg',true);
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+VALUES ('bunny','American Bunny',12,'Nuts','Medium','Sprinkles',false,'https://i.imgur.com/2Qg5o0N.jpeg',true);
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
-VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+VALUES ('ferret','unknown',7,'Curious','Small','Winston',false,'https://i.imgur.com/vqtP2Jm.jpeg',true);
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('bunny','unknown',2,'Anxious','Small','Roger',false,'https://i.imgur.com/jydvLf6.jpeg',true);
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','mixed',4,'Friendly','Medium','Daisy',false,'https://i.imgur.com/gkcz5Ep.jpg',true);
+
+insert into donation (donation_id,donation_date, first_name,last_name,description)
+values(default,'01-01-2022','Bibek','siwakoti','i would like to donate');
