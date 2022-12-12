@@ -21,7 +21,7 @@
           />
         </form>
         <div class="donate-stuff">
-          <form class="form-donate-stuff">
+          <form class="form-donate-stuff" @submit.prevent="submitDonation">
             <h2 class="donate-title">Donate Stuff</h2>
             <input
               class="donate-control"
@@ -40,7 +40,7 @@
               v-model="donation.description"
             >
             </textarea>
-            <button class="donate-control" type="submit" v-bind="submitDonation">Submit</button>
+            <button class="donate-control" type="submit">Submit</button>
           </form>
         </div>
       </div>
@@ -51,7 +51,6 @@
 <script>
 import donationService from "@/services/DonationService.js";
 export default {
-  name: "donation",
   data() {
     return{
     donation: {
@@ -72,6 +71,9 @@ export default {
     }) 
     },
   },
+  computed: {
+    
+  }
 };
 
 </script>
