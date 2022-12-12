@@ -1,7 +1,6 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.VolunteerDao;
-import com.techelevator.model.Adopter;
 import com.techelevator.model.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,13 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 
 
 @RestController
 @CrossOrigin
-public class VolunteerContoller {
+public class VolunteerController {
 
     @Autowired
     private VolunteerDao volunteerDao;

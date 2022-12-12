@@ -1,8 +1,6 @@
 <template>
 
   <div id="volunteer" class="text-center">
-      <!-- <label for="username">Username</label>
-      <input type="text"> -->
       <div class="show form" v-if="checkToken">
     <form class="form-volunteer" @submit.prevent="save"  >
           <h1 class="h3 mb-3 font-weight-normal">Become A Volunteer</h1>
@@ -11,13 +9,6 @@
            <input type="text" v-model="volunteer.address">
            <label for="phone-number" class="volunteer">Phone Number</label>
            <input type="text" v-model="volunteer.phoneNumber">
-           <!-- <label for="availabilityDate">Available Dates </label>
-           <input type="date" id="date" name="date" class="volunteer" v-> -->
-           <!-- <select name="time" id="time" class="volunteer">
-                <option value="morning">Morning</option>
-                <option value="afternoon">Afternoon</option>
-                <option value="Evening">Evening</option>
-            </select> -->
            <div class="active">
            <label for="is-active" class="volunteer">Active</label>
            <input type="checkbox" v-model="volunteer.isActive"> <!-- when checked, isActive will be true -->

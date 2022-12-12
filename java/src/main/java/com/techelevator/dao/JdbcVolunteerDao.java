@@ -24,6 +24,8 @@ public class JdbcVolunteerDao implements VolunteerDao {
         volunteer.setAddress(results.getString("address"));
         volunteer.setPhoneNumber(results.getString("phone_number"));
         volunteer.setVolunteerId(results.getInt("volunteer_id"));
+        volunteer.setActive(results.getBoolean("is_active"));
+        volunteer.setStatus(results.getString("status"));
 
         return volunteer;
     }
@@ -121,7 +123,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     @Override
     public boolean setVolunteerRejected(int volunteerId) {
-        String sql = "update volunteer set is_active = 'Rejected' where volunteer_id = ?;";
+        String sql = "update volunteer set status = 'Rejected' where volunteer_id = ?;";
         return jdbcTemplate.update(sql, volunteerId) == 1;
     }
 }
