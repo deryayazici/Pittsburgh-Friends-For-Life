@@ -112,5 +112,19 @@ VALUES ((SELECT user_id FROM users WHERE user_id=1),'Approved',1);
 INSERT INTO questionnaire (first_name,last_name,number_children,housing_type,fenced_yard,walker,years_of_pet_experience,renting_or_owning,vet,disabled,animal_id,adopter_id,reference_one,reference_one_contact,reference_two,reference_two_contact)
 VALUES ('Lucas','Rover',0,'House',false,'Lucas',20,'own','vet',false,1,1,'referenceOne','contactOne','referenceTwo','contactTwo');
 
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
 
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
 
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','Golden-Retriever-Mixed',5,'Noisy','Medium','Indie',false,'https://i.imgur.com/L1b5K2P.png',true);
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','mixed',3,'Playful','Small','Aiden',false,'https://i.imgur.com/t5GL2tW.jpg',true);
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','mixed',4,'Friendly','Medium','Daisy',false,'https://i.imgur.com/gkcz5Ep.jpg',true);

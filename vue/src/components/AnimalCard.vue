@@ -1,23 +1,26 @@
 <template>
-<section>
-  <article class="picture" >
-    <div class="pic-container">
-     <router-link v-bind:to="{name: 'animal-details', params: { animalId: animal.animalId }}" v-bind:animal="animal">
-        <img v-bind:src="animal.photo" alt="" />
-        <h3>{{animal.name}}</h3>
-  
-     </router-link>
-    </div>
-  </article>
+  <section>
+    <article class="picture">
+      <div class="pic-container">
+        <router-link
+          v-bind:to="{
+            name: 'animal-details',
+            params: { animalId: animal.animalId },
+          }"
+          v-bind:animal="animal"
+        >
+          <img v-bind:src="animal.photo" alt="" />
+          <h3>{{ animal.name }}</h3>
+        </router-link>
+      </div>
+    </article>
   </section>
 </template>
 
 <script>
-
 export default {
+  props: ["animal"],
 
-  props:['animal'],
-     
   data() {
     return {
       // pics: [
@@ -30,19 +33,16 @@ export default {
       // ],
     };
   },
-  
 };
 </script>
 
 <style>
 .home {
-  background-color: #fffffe;
+  /* background-color: #fffffe; */
 
   min-height: 100vh;
 }
-li {
-  list-style-type: none;
-}
+
 img {
   display: block;
   width: 100%;
@@ -64,7 +64,7 @@ img {
 }
 
 @media screen and (min-width: 500px) {
-  ul {
+  .home {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-width: 90vw;
@@ -76,7 +76,7 @@ img {
     height: 300px;
   }
   @media screen and (min-width: 768px) {
-    ul {
+    .home {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
