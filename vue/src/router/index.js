@@ -9,8 +9,8 @@ import AnimalDetails from "../views/AnimalDetails.vue";
 import VolunteerList from "../views/VolunteerList.vue";
 import AnimalAdopter from "../views/AnimalAdopter.vue";
 import ShelterDonation from "../views/ShelterDonation.vue";
-import UserPage from '../views/UserPage.vue';
-
+import UserPage from "../views/UserPage.vue";
+import RandomCat from "../components/RandomCat.vue";
 
 Vue.use(Router);
 
@@ -28,29 +28,34 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path:"/donate",
-      name:"donation",
-      component:ShelterDonation,
-      meta: {
-        requiresAuth: false,
-      }
+      path: "/cat",
+      name: "random-cat",
+      component: RandomCat,
     },
     {
-      path:"/adopt",
-      name:"adopt",
-      component:AnimalAdopter,
+      path: "/donate",
+      name: "donation",
+      component: ShelterDonation,
       meta: {
         requiresAuth: false,
       },
     },
     {
-      path:"/settings",
-      name:"settings",
-      component:UserPage,
+      path: "/adopt",
+      name: "adopt",
+      component: AnimalAdopter,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: UserPage,
     },
     {
       path: "/volunteer",
-      name:"volunteer",
+      name: "volunteer",
       component: VolunteerList,
       meta: {
         requiresAuth: false,

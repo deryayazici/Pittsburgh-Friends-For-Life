@@ -2,9 +2,8 @@
   <div>
     <animal-info :animal="animal"></animal-info>
     <!-- <h2>{{animal.name}}</h2> -->
-    
-     <animal-info />
-   
+
+    <animal-info />
   </div>
 </template>
 
@@ -13,28 +12,32 @@ import AnimalInfo from "@/components/AnimalInfo.vue";
 import animalService from "@/services/AnimalService.js";
 
 export default {
-    data() {
+  data() {
     return {
-        animal:{}
-  
+      animal: {},
     };
   },
-  
-   methods:{
+
+  methods: {
     displayAnimalsDetails() {
-    animalService.getAnimalById(this.$route.params.animalId)
-    .then ((response) => { 
-      this.animal=response.data
-      });
+      animalService
+        .getAnimalById(this.$route.params.animalId)
+        .then((response) => {
+          this.animal = response.data;
+        });
     },
   },
- created() {
-  this.displayAnimalsDetails()
- },
+  created() {
+    this.displayAnimalsDetails();
+  },
   components: {
     AnimalInfo,
-  }
-}
+  },
+};
 </script>
 
-<style></style>
+<style>
+.animal-section-details {
+  display: flex;
+}
+</style>
