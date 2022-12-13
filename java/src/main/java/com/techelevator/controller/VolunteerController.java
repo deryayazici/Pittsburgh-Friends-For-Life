@@ -41,20 +41,24 @@ public class VolunteerController {
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public boolean updateVolunteer(@Valid @RequestBody Volunteer volunteer, @PathVariable int id) {
         return  volunteerDao.update(volunteer);
-
     }
 
-    @RequestMapping(path="/pendingVolunteers", method=RequestMethod.GET)
+    @RequestMapping(value ="/pendingVolunteers", method=RequestMethod.GET)
         public List<Volunteer> getPendingVolunteers() {
        return this.volunteerDao.getPending();
     }
 
-    @RequestMapping (path ="/approveVolunteer/{id}", method = RequestMethod.PUT)
+    @RequestMapping (value ="/approveVolunteer/{id}", method = RequestMethod.PUT)
     public boolean approveVolunteer (@PathVariable int id) {
        return volunteerDao.setVolunteerApproved(id);
     }
 
-    @RequestMapping (path="/approvedVolunteers",method = RequestMethod.GET)
+    @RequestMapping (value ="/rejectVolunteer/{id}", method = RequestMethod.PUT)
+    public boolean rejectVolunteer (@PathVariable int id) {
+        return volunteerDao.setVolunteerRejected(id);
+    }
+
+    @RequestMapping (value ="/approvedVolunteers",method = RequestMethod.GET)
     public List<Volunteer> getApprovedVolunteers() {
         return this.volunteerDao.getApproved();
     }

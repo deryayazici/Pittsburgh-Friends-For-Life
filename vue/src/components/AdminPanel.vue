@@ -1,14 +1,15 @@
 <template>
 <div>
     <h1>Pending Volunteers</h1>
-  <section v-for="volunteer in pendingVolunteers" v-bind:key="volunteer.volunteerId" v-bind:volunteer="volunteer">
+  <section v-for="volunteer in pendingVolunteers" v-bind:key="volunteer.volunteerId">
      <div>
+         <!-- <h2>{{volunteer.volunteerId}}</h2> -->
         <h2>{{volunteer.firstName}}  {{volunteer.lastName}}</h2>
         <h3>{{volunteer.address}}</h3>
         <h3>{{volunteer.phoneNumber}}</h3>
-        <button type="submit" @click ="approve">Approve</button> 
+        <button type="submit" @click ="approve(volunteer.volunteerId)">Approve</button> 
         <!-- todo make approval change user authorities -->
-        <button type="submit" @click = "reject" >Reject</button>
+        <button type="submit" @click = "reject(volunteer.volunteerId)" >Reject</button>
     </div>
   </section>
 </div>
@@ -21,18 +22,11 @@ export default {
     data() {
         return {
         pendingVolunteers: [],
-        // volunteer : {
-        //     volunteerId:0,
-        //     firstName:'',
-        //     lastName:'',
-        //     phoneNumber:'',
-        //     isActive:'',
-        //     status:'Pending'
-
-        // }
+        
     }
     },
     methods: {
+        
         getAllPendingVolunteers() {
         volunteerService.getPendingVolunteers()
         .then (response => {
@@ -40,11 +34,19 @@ export default {
         });
         },
 
-        approve() {
-       volunteerService.approveVolunteerStatus(this.volunteer.volunteerId)
+        approve(id) {
+       volunteerService.approveVolunteerStatus(id).then((response) => {
+           if(response.status === 201) {
+               this.$router.push("/settings");
+           }
+       })
     },
-    reject() {
-        volunteerService.rejectVolunteerStatus(this.volunteer.volunteerId)
+        reject(id) {
+        volunteerService.rejectVolunteerStatus(id).then((response) => {
+            if(response.status === 201) {
+                this.$router.push("/settings");
+            }
+        })
     },
 
     },

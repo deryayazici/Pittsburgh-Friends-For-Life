@@ -13,8 +13,12 @@ export default {
         return axios.get ('/approvedVolunteers')
     },
     
-    approveVolunteerStatus(id){
-        return axios.put(`/approveVolunteer/${id}`)
+    approveVolunteerStatus(volunteerId){
+        return axios.put(`/approveVolunteer/${volunteerId}`)
+    },
+
+    rejectVolunteerStatus(volunteerId) {
+      return axios.put(`/rejectVolunteer/${volunteerId}`)
     }
 
 
