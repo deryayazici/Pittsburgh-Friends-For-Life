@@ -3,7 +3,8 @@
     <animal-info :animal="animal">
       
     </animal-info>
-    <button class="showForm" @click ="showForm">Adopt</button>
+    <router-link :to="{name:'register'}" v-if="!checkToken" >Please register before adopting</router-link>
+    <button class="showForm" @click ="showForm" v-if="checkToken">Adopt</button>
     <adoption-questionnaire v-if="showQuestionnaire"></adoption-questionnaire>
 
     
@@ -17,6 +18,7 @@ import AdoptionQuestionnaire from "@/components/AdoptionQuestionnaire.vue";
 
 
 export default {
+   
   data() {
     return {
       showQuestionnaire:false,
@@ -57,6 +59,7 @@ export default {
       
     }
   },
+   
   created() {
     this.displayAnimalsDetails();
   },
@@ -64,9 +67,15 @@ export default {
     AnimalInfo,
     AdoptionQuestionnaire,
   },
+  computed: {
+    checkToken() {
+      return this.$store.state.user.username != null;
+    },
 
  
-};
+},
+}
+
 </script>
 
 <style>

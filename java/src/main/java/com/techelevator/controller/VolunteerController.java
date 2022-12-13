@@ -50,8 +50,8 @@ public class VolunteerController {
     }
 
     @RequestMapping (path ="/approveVolunteer/{id}", method = RequestMethod.PUT)
-    public boolean approveVolunteer (@RequestBody int volunteerId) {
-       return volunteerDao.setVolunteerApproved(volunteerId);
+    public boolean approveVolunteer (@PathVariable int id) {
+       return volunteerDao.setVolunteerApproved(id);
     }
 
     @RequestMapping (path="/approvedVolunteers",method = RequestMethod.GET)

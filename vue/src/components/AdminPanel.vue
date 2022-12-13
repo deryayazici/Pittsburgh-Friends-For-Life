@@ -21,6 +21,15 @@ export default {
     data() {
         return {
         pendingVolunteers: [],
+        // volunteer : {
+        //     volunteerId:0,
+        //     firstName:'',
+        //     lastName:'',
+        //     phoneNumber:'',
+        //     isActive:'',
+        //     status:'Pending'
+
+        // }
     }
     },
     methods: {
