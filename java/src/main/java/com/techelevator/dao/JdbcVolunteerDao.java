@@ -114,7 +114,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     @Override
     public boolean setVolunteerApproved(int volunteerId) {
-        String sql = "update volunteer set status = 'Approved' where volunteer_id = ? " +
+        String sql = "update volunteer set status = 'Approved' where volunteer_id = ?; " +
                 "update users set role='ROLE_VOLUNTEER' where user_id=?;";
         return jdbcTemplate.update(sql, volunteerId,volunteerId) == 1;
     }
