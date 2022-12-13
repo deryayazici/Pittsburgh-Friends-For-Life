@@ -94,9 +94,11 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
 
     @Override
     public boolean save(QuestionnaireDto questionnaireDto) {
-        String sql = "INSERT INTO questionnaire (questionnaire_id,first_name,last_name,phone_number,number_children,housing_type,fenced_yard,walker,years_of_pet_experience,renting_or_owning,vet,disabled,animal_id,adopter_id,reference_one,reference_one_contact,reference_two,reference_two_contact)\n" +
+        String sql = "Insert into adopter (adopter_id,approved_to_adopt,animal_id)" +
+                "Values (?,'Pending',?); "+
+                "INSERT INTO questionnaire (questionnaire_id,first_name,last_name,phone_number,number_children,housing_type,fenced_yard,walker,years_of_pet_experience,renting_or_owning,vet,disabled,animal_id,adopter_id,reference_one,reference_one_contact,reference_two,reference_two_contact)\n" +
                 "VALUES (default,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-        return jdbcTemplate.update(sql,
+        return jdbcTemplate.update(sql,questionnaireDto.getAdopter_id(),questionnaireDto.getAnimal_id(),
                 questionnaireDto.getFirst_name(),
                 questionnaireDto.getLast_name(),
                 questionnaireDto.getPhone_number(),

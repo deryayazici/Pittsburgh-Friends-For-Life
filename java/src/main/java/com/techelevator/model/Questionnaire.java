@@ -1,27 +1,41 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.mapping.model.Property;
 
 public class Questionnaire {
 
 
     private int questionnaire_id;
+    @JsonProperty("firstName")
     private String first_name;
+    @JsonProperty("lastName")
     private String last_name;
+    @JsonProperty("phoneNumber")
     private String phone_number;
+    @JsonProperty("numberChildren")
     private int number_children;
+    @JsonProperty("housingType")
     private String housing_type;
+    @JsonProperty("fencedYard")
     private boolean fenced_yard;
+    @JsonProperty("walker")
     private String walker;
+    @JsonProperty("yearsOfPetExperience")
     private int years_of_pet_experience;
+    @JsonProperty("rentingOrOwning")
     private String renting_or_owning;
     private String vet;
     private boolean disabled;
     private int animal_id;
     private int adopter_id;
+    @JsonProperty("referenceOne")
     private String reference_one;
+    @JsonProperty("referenceOneContact")
     private String reference_one_contact;
+    @JsonProperty("referenceTwo")
     private String reference_two;
+    @JsonProperty("referenceTwoContact")
     private String reference_two_contact;
 
     public String getPhone_number() {

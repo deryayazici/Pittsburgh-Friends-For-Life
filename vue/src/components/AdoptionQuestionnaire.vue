@@ -49,7 +49,7 @@
         <input type="text" v-model="questionnaire.referenceTwoContact" />
         <label for="phone-number" class="volunteer">Phone Number</label>
         <input type="text" v-model="questionnaire.phoneNumber" />
-        <button class="btn-adopt" type="submit" @click.prevent="save">Submit</button>
+        <button class="btn-adopt" type="submit" >Submit</button>
       </section>
     </form>
   </div>
@@ -72,7 +72,7 @@ export default {
         rentingOrOwning: "",
         vet: "",
         disabled: false,
-        animal_id: this.$router.animalId,
+        animal_id: this.$route.params.animalId,
         adopter_id: this.$store.state.user.id,
         referenceOne: "",
         referenceOneContact: "",
@@ -86,12 +86,13 @@ export default {
   methods: {
     save() {
 
-       this.questionnaire.animal_id = this.$router.params.animalId;
+       this.questionnaire.animal_id = this.$route.params.animalId;
        this.questionnaire.adopter_id = this.$store.state.user.id;
       adopterService.addQuestionnaire(this.questionnaire)
       .then (response => {
        if(response.status === 201) {
       this.$router.push('/');
+
                 
       } 
      }) 

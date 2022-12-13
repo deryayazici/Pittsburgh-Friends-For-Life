@@ -21,7 +21,7 @@ public class QuestionnaireController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/adopt/questionnaire", method = RequestMethod.POST)
+    @RequestMapping(value = "/adopter/questionnaire", method = RequestMethod.POST)
     public void submitQuestionnaire(@Valid @RequestBody QuestionnaireDto questionnaire) {
         try {
             questionnaireDao.save(questionnaire);
