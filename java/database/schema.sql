@@ -68,6 +68,7 @@ CREATE TABLE questionnaire (
 	questionnaire_id serial,
 	first_name varchar(50) not null,
 	last_name varchar(50) not null,
+	phone_number varchar (50) not null,
 	number_children int not null,
     housing_type varchar(20) not null,
 	fenced_yard boolean not null,

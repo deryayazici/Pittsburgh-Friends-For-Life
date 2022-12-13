@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 
 
 @RestController
 @CrossOrigin
-public class VolunteerContoller {
+public class VolunteerController {
 
     @Autowired
     private VolunteerDao volunteerDao;

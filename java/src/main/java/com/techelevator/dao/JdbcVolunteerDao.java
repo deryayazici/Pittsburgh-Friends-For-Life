@@ -24,6 +24,8 @@ public class JdbcVolunteerDao implements VolunteerDao {
         volunteer.setAddress(results.getString("address"));
         volunteer.setPhoneNumber(results.getString("phone_number"));
         volunteer.setVolunteerId(results.getInt("volunteer_id"));
+        volunteer.setActive(results.getBoolean("is_active"));
+        volunteer.setStatus(results.getString("status"));
 
         return volunteer;
     }

@@ -1,40 +1,57 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotEmpty;
 
 public class QuestionnaireDto {
 
     @NotEmpty
+    @JsonProperty("firstName")
     private String first_name;
     @NotEmpty
+    @JsonProperty("lastName")
     private String last_name;
     @NotEmpty
+    @JsonProperty("phoneNumber")
+    private String phone_number;
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+    @JsonProperty("numberChildren")
     private int number_children;
     @NotEmpty
+    @JsonProperty("housingType")
     private String housing_type;
-    @NotEmpty
+    @JsonProperty("fencedYard")
     private boolean fenced_yard;
     @NotEmpty
     private String walker;
-    @NotEmpty
+    @JsonProperty("yearsOfPetExperience")
     private int years_of_pet_experience;
     @NotEmpty
+    @JsonProperty("rentingOrOwning")
     private String renting_or_owning;
     @NotEmpty
     private String vet;
-    @NotEmpty
     private boolean disabled;
-    @NotEmpty
     private int animal_id;
-    @NotEmpty
     private int adopter_id;
     @NotEmpty
+    @JsonProperty("referenceOne")
     private String reference_one;
     @NotEmpty
+    @JsonProperty("referenceOneContact")
     private String reference_one_contact;
     @NotEmpty
+    @JsonProperty("referenceTwo")
     private String reference_two;
     @NotEmpty
+    @JsonProperty("referenceTwoContact")
     private String reference_two_contact;
 
     public String getFirst_name() {

@@ -13,6 +13,18 @@ public class Volunteer {
     private String phoneNumber;
     @NotEmpty
     private String address;
+    @NotEmpty
+    private boolean isActive;
+    @NotEmpty
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -29,8 +41,6 @@ public class Volunteer {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    private boolean isActive;
 
     public boolean isActive() {
         return isActive;
