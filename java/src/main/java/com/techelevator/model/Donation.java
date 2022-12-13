@@ -1,14 +1,23 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 
 public class Donation {
 
     private int donation_id;
+    @JsonProperty("donatorId")
     private int donator_id;
+
+    @JsonProperty("firstName")
     private String first_name;
+
+    @JsonProperty("lastName")
     private String last_name;
     private String description;
+
+    @JsonProperty("date")
     private LocalDate donation_date;
 
     public LocalDate getDonation_date() {

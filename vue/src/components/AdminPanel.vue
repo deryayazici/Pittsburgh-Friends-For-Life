@@ -6,7 +6,7 @@
         <h2>{{volunteer.firstName}}  {{volunteer.lastName}}</h2>
         <h3>{{volunteer.address}}</h3>
         <h3>{{volunteer.phoneNumber}}</h3>
-        <button type="submit" v-bind ="approve">Approve</button> 
+        <button type="submit" @click ="approve">Approve</button> 
         <!-- todo make approval change user authorities -->
         <button type="submit" @click = "reject" >Reject</button>
     </div>
@@ -33,7 +33,11 @@ export default {
 
         approve() {
        volunteerService.approveVolunteerStatus(this.volunteer.volunteerId)
-    }
+    },
+    reject() {
+        volunteerService.rejectVolunteerStatus(this.volunteer.volunteerId)
+    },
+
     },
     created(){
         this.getAllPendingVolunteers()

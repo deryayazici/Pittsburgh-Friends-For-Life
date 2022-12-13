@@ -25,6 +25,7 @@ public class DonationController {
     public List<Donation> listAllDoantionByUserId(@PathVariable int id){
         return donationDao.getAllDonationByUsersID(id);
     }
+    
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/donation/submit",method = RequestMethod.POST)
     public void addDonation(@RequestBody Donation donation){
