@@ -58,6 +58,7 @@
 <script>
 import adopterService from "@/services/AdopterService.js";
 export default {
+ 
   data() {
     return {
      questionnaire: {
