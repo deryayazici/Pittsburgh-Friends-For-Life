@@ -28,7 +28,7 @@
         <input type="text" v-model="updateAnimal.photo" />
 
         <label for="is-adopted" class="pet">Adopted?</label>
-        <input type="checkbox" v-model="updateAnimal.isAdopted" />
+        <input type="checkbox" v-model="updateAnimal.isAdopted"/>
 
         <button class="btn-pet" type="submit">Submit</button>
       </section>

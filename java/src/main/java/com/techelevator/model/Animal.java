@@ -89,7 +89,7 @@ public class Animal {
         return isAdopted;
     }
 
-    public void setAdopted(boolean adopted) {
+    public void setIsAdopted(boolean adopted) {
         isAdopted = adopted;
     }
 
