@@ -148,3 +148,6 @@ VALUES ('dog','mixed',4,'Friendly','Medium','Daisy',false,'https://i.imgur.com/g
 
 insert into donation (donation_id,donation_date, first_name,last_name,description)
 values(default,'01-01-2022','Bibek','siwakoti','i would like to donate');
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('dog','mixed',3,'Playful','Small','Aiden',false,'https://i.imgur.com/t5GL2tW.jpg',true)
