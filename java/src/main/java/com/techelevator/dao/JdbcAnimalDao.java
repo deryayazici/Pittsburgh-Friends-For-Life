@@ -22,9 +22,7 @@ public class JdbcAnimalDao implements AnimalDao{
     public List<Animal> findAll() {
 
         List<Animal> animals = new ArrayList<>();
-
         String sql = "SELECT * FROM animal";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
         while(results.next()){
@@ -38,9 +36,7 @@ public class JdbcAnimalDao implements AnimalDao{
     public Animal getAnimalById(int animalId) {
 
         String sql = "SELECT * FROM animal WHERE animal_id = ?";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, animalId);
-
         if(results.next()){
             return mapRowToAnimal(results);
         }else{
@@ -79,11 +75,22 @@ public class JdbcAnimalDao implements AnimalDao{
     }
 
     @Override
+    public Animal getAnimalByName(String name){
+
+        String sql = "SELECT * FROM animal WHERE name = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name.toLowerCase());
+        if(results.next()){
+            return mapRowToAnimal(results);
+        }else{
+            return null;
+        }
+    }
+
+    @Override
     public List<Animal> listAdoptableAnimals() {
+
         List<Animal> displayAnimal = new ArrayList<>();
-
         String sql = "SELECT * FROM animal WHERE is_adopted = true";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
         while(results.next()){
@@ -93,6 +100,7 @@ public class JdbcAnimalDao implements AnimalDao{
     }
 
     private Animal mapRowToAnimal(SqlRowSet rs){
+        
         Animal animal = new Animal();
         animal.setAnimalId(rs.getInt("animal_id"));
         animal.setType(rs.getString("type"));
