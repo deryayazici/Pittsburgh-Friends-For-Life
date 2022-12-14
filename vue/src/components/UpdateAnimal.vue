@@ -1,7 +1,7 @@
 <template>
   <div>
       <form class="update-pet" @submit.prevent="update">
-      <h1 class="h3 mb-3 font-weight-normal">Update this animal</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Update {{this.animal.name}}</h1>
       <section class="sec-pet">
         <label for="type" class="pet">Type</label>
         <input type="text" v-model="updateAnimal.type" />
@@ -55,6 +55,16 @@ export default {
                 specialNeeds: this.animal.specialNeeds,
                 photo: this.animal.photo,
                 isAdopted: this.animal.isAdopted,
+                //  animalId: this.$route.params.animalId,
+                // name: "",
+                // type: "",
+                // breed:"",
+                // age: 0,
+                // size: "",
+                // temperament: "",
+                // specialNeeds: "",
+                // photo: "",
+                // isAdopted: false,
 
             }
         }
@@ -62,6 +72,7 @@ export default {
 
     methods: {
         update() {
+
             animalService.updateAnimal(this.updateAnimal.animalId, this.updateAnimal).then((response) => {
                 if (response.status === 200) {
                     this.$router.push("/");

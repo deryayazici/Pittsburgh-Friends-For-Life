@@ -69,12 +69,14 @@ public class JdbcAnimalDao implements AnimalDao{
 
         return animalId > 0;
     }
-//    @Override
-//    public Animal updateAnimal(int animalId, Animal animal) {
-//        String sql = "update animal set type =?, breed=?, size=?, temperament=?, name=?, special_needs=?, photo=?, is_adopted=? where animal_id=?;";
-//
-//        return jdbcTemplate.update(sql, animal.get);
-//    }
+    @Override
+    public boolean updateAnimal(int animalId,Animal animal) {
+        String sql = "update animal set type =?, breed=?, size=?, temperament=?, name=?, special_needs=?, photo=?, is_adopted=? where animal_id=?;";
+
+        return jdbcTemplate.update(sql,animal.getType(),
+                animal.getBreed(),animal.getSize(),animal.getTemperament(),
+                animal.getName(),animal.isSpecialNeeds(),animal.getPhoto(),animal.isAdopted(),animalId) ==1;
+    }
 
     @Override
     public List<Animal> listAdoptableAnimals() {
