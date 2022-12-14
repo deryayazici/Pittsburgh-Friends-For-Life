@@ -57,12 +57,70 @@ export default {
     },
 
     methods: {
-        
+        update() {
+            animalService.updateAnimal(this.updateAnimal.animalId, this.updateAnimal).then((response) => {
+                if (response.status === 200) {
+                    this.$router.push("/");
+                }
+            });
+        }
     }
 
 }
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+:root {
+  --clr-1: #ff8ba7;
+  --clr-2: #3cf157;
+}
+
+html {
+  font-family: "Limelight", cursive;
+  min-height: 100vh;
+}
+.text-center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background-color: #fffffe;
+}
+.update-pet {
+  padding: 30px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  border: 10px solid #fffffe;
+  border-radius: 8px;
+  background-color: #fffffe;
+}
+
+.sec-pet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.pet {
+  display: block;
+  margin-top: 10px;
+}
+
+.btn-pet {
+  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: var(--clr-1);
+  color: #fffffe;
+  font-weight: bold;
+  cursor: pointer;
+}
 </style>
