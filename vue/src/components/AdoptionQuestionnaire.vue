@@ -49,8 +49,9 @@
           >Reference contact</label
         >
         <input type="text" v-model="questionnaire.referenceTwoContact" />
-        
-        <button class="btn-adopt" type="submit" >Submit</button>
+        <label for="phone-number" class="volunteer">Phone Number</label>
+        <input type="text" v-model="questionnaire.phoneNumber" />
+        <button class="btn-adopt" type="submit">Submit</button>
       </section>
     </form>
   </div>
@@ -59,11 +60,10 @@
 <script>
 import adopterService from "@/services/AdopterService.js";
 export default {
- 
   data() {
     return {
-     questionnaire: {
-        questionnaire_id:0,
+      questionnaire: {
+        questionnaire_id: 0,
         firstName: "",
         lastName: "",
         numberChildren: 0,
@@ -87,17 +87,13 @@ export default {
   name: "adoption-questionnaire",
   methods: {
     save() {
-
-       this.questionnaire.animal_id = this.$route.params.animalId;
-       this.questionnaire.adopter_id = this.$store.state.user.id;
-      adopterService.addQuestionnaire(this.questionnaire)
-      .then (response => {
-       if(response.status === 201) {
-      this.$router.push('/');
-                  
-      } 
-     }) 
-
+      this.questionnaire.animal_id = this.$route.params.animalId;
+      this.questionnaire.adopter_id = this.$store.state.user.id;
+      adopterService.addQuestionnaire(this.questionnaire).then((response) => {
+        if (response.status === 201) {
+          this.$router.push("/");
+        }
+      });
     },
   },
 };
@@ -119,6 +115,9 @@ export default {
 html {
   font-family: "Limelight", cursive;
   min-height: 100vh;
+}
+#questionnaire {
+  background-color: #fbfbbb;
 }
 .text-center {
   min-height: 100vh;

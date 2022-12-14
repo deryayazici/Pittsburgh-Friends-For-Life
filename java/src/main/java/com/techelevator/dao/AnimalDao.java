@@ -11,6 +11,7 @@ public interface AnimalDao {
     Animal getAnimalById(int userId);
 
     boolean addAnimal (Animal animal);
+    boolean updateAnimal (int animalId,Animal animal);
 
     List<Animal> listAdoptableAnimals();
 

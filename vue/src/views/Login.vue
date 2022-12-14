@@ -76,6 +76,9 @@ export default {
 </script>
 
 <style>
+#login {
+  background-color: #fbfbbb;
+}
 .text-center {
   background-color: #fbfbbb;
 }
