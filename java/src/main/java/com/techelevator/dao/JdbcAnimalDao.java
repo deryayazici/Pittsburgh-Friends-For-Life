@@ -73,9 +73,9 @@ public class JdbcAnimalDao implements AnimalDao{
     public boolean updateAnimal(int animalId,Animal animal) {
         String sql = "update animal set type =?, breed=?, size=?, temperament=?, name=?, special_needs=?, photo=?, is_adopted=? where animal_id=?;";
 
-        return jdbcTemplate.update(sql, animalId,animal.getType(),
+        return jdbcTemplate.update(sql,animal.getType(),
                 animal.getBreed(),animal.getSize(),animal.getTemperament(),
-                animal.getName(),animal.isSpecialNeeds(),animal.getPhoto(),animal.isAdopted()) ==1;
+                animal.getName(),animal.isSpecialNeeds(),animal.getPhoto(),animal.isAdopted(),animalId) ==1;
     }
 
     @Override

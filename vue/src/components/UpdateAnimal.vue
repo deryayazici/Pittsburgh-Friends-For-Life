@@ -55,6 +55,16 @@ export default {
                 specialNeeds: this.animal.specialNeeds,
                 photo: this.animal.photo,
                 isAdopted: this.animal.isAdopted,
+                //  animalId: this.$route.params.animalId,
+                // name: "",
+                // type: "",
+                // breed:"",
+                // age: 0,
+                // size: "",
+                // temperament: "",
+                // specialNeeds: "",
+                // photo: "",
+                // isAdopted: false,
 
             }
         }
@@ -63,7 +73,6 @@ export default {
     methods: {
         update() {
 
-         
             animalService.updateAnimal(this.updateAnimal.animalId, this.updateAnimal).then((response) => {
                 if (response.status === 200) {
                     this.$router.push("/");

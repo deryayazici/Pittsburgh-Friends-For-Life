@@ -33,7 +33,7 @@ public class AnimalController {
         dao.addAnimal(animal);
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/animals/{id}", method = RequestMethod.PUT)
     public boolean updateAnimal(@Valid @PathVariable int id,@RequestBody Animal animal) {
         return  dao.updateAnimal(id,animal);
     }
