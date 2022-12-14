@@ -7,5 +7,9 @@ export default {
 
   getAnimalById(animalId) {
     return axios.get(`/animals/${animalId}`)
-  }
+  },
+
+  addAdoptableAnimal(animal){
+    return axios.post("/animals",animal)
+  },
 };
