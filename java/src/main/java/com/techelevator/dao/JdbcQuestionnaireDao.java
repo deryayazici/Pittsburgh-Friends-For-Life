@@ -27,12 +27,12 @@ public class JdbcQuestionnaireDao implements QuestionnaireDao {
         questionnaire.setPhone_number(results.getString("phone_number"));
         questionnaire.setNumber_children(results.getInt("number_children"));
         questionnaire.setHousing_type(results.getString("housing_type"));
-        questionnaire.setFenced_yard(results.getBoolean("fenced_yard"));
+        questionnaire.setIsFenced_yard(results.getBoolean("fenced_yard"));
         questionnaire.setWalker(results.getString("walker"));
         questionnaire.setYears_of_pet_experience(results.getInt("years_of_pet_experience"));
         questionnaire.setRenting_or_owning(results.getString("renting_or_owning"));
         questionnaire.setVet(results.getString("vet"));
-        questionnaire.setDisabled(results.getBoolean("disabled"));
+        questionnaire.setIsDisabled(results.getBoolean("disabled"));
         questionnaire.setAnimal_id(results.getInt("animal_id"));
         questionnaire.setAdopter_id(results.getInt("adopter_id"));
         questionnaire.setReference_one(results.getString("reference_one"));

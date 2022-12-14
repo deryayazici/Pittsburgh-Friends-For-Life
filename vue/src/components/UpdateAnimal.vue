@@ -28,7 +28,7 @@
         <input type="text" v-model="updateAnimal.photo" />
         
         <label for="is-adopted" class="pet">Adopted?</label>
-        <input type="checkbox" v-model="updateAnimal.isAdopted" />
+        <input type="checkbox" v-model="updateAnimal.isAdopted"/>
 
         <button class="btn-pet" type="submit" >Submit</button>
       </section>    
@@ -75,11 +75,12 @@ export default {
 
             animalService.updateAnimal(this.updateAnimal.animalId, this.updateAnimal).then((response) => {
                 if (response.status === 200) {
-                    this.$router.push("/");
+                   // this.$router.push("/");
                 }
             });
         }
-    }
+    },
+    
 
 }
 </script>

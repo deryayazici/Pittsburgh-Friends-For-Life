@@ -90,7 +90,7 @@ public class Questionnaire {
         return fenced_yard;
     }
 
-    public void setFenced_yard(boolean fenced_yard) {
+    public void setIsFenced_yard(boolean fenced_yard) {
         this.fenced_yard = fenced_yard;
     }
 
@@ -130,7 +130,7 @@ public class Questionnaire {
         return disabled;
     }
 
-    public void setDisabled(boolean disabled) {
+    public void setIsDisabled(boolean disabled) {
         this.disabled = disabled;
     }
 

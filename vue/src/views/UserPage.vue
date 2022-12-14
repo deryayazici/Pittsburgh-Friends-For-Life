@@ -30,12 +30,14 @@ export default {
     checkAuthorizationLevel() {
         return this.$store.state.user.authorities[0].name;
     },
+   
 },
 
 methods:{
      showForm() {
       this.isFormExtended = !this.isFormExtended;
     },
+
 }
 
 
