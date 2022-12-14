@@ -1,16 +1,15 @@
 <template>
   <div>
-    <animal-info :animal="animal"> </animal-info>
-    <router-link :to="{ name: 'register' }" v-if="!checkToken"
-      >Please register before adopting</router-link
-    >
-    <div class="adopt-btn-div">
-      <button class="showForm" @click="showForm" v-if="checkToken">
-        {{ showQuestionnaire ? "Hide Form" : "Adopt" }}
-      </button>
-    </div>
+    <animal-info :animal="animal">
+    </animal-info>
 
+    <router-link :to="{name:'register'}" v-if="!checkToken" >Please register before adopting</router-link>
+    <button class="showForm" @click ="showForm" v-if="checkToken">Adopt</button>
     <adoption-questionnaire v-if="showQuestionnaire"></adoption-questionnaire>
+
+    <button class="showForm" @click ="showUpdateForm" v-if="checkAuthorizationLevel === true">Edit this Animal</button>
+    <update-animal :animal="animal" v-if="showUpdate"></update-animal>
+ 
   </div>
 </template>
 
@@ -18,11 +17,13 @@
 import AnimalInfo from "@/components/AnimalInfo.vue";
 import animalService from "@/services/AnimalService.js";
 import AdoptionQuestionnaire from "@/components/AdoptionQuestionnaire.vue";
+import UpdateAnimal from '../components/UpdateAnimal.vue';
 
 export default {
   data() {
     return {
-      showQuestionnaire: false,
+      showQuestionnaire:false,
+      showUpdate: false,
       animal: {},
     };
   },
@@ -37,6 +38,10 @@ export default {
     },
     showForm() {
       this.showQuestionnaire = !this.showQuestionnaire;
+        
+    },
+    showUpdateForm(){
+      this.showUpdate = !this.showUpdate; 
     },
   },
 
@@ -46,10 +51,22 @@ export default {
   components: {
     AnimalInfo,
     AdoptionQuestionnaire,
+    UpdateAnimal,
   },
   computed: {
     checkToken() {
-      return this.$store.state.user.username != null;
+      return this.$store.state.token != null && this.$store.state.token != '';
+    },
+
+    checkAuthorizationLevel() {
+      if(this.checkToken){
+        if(this.$store.state.user.authorities[0].name === 'ROLE_ADMIN' || this.$store.state.user.authorities[0].name === 'ROLE_VOLUNTEER') {
+          return true;
+        } return false;
+
+        } else {
+          return false
+          }
     },
   },
 };
