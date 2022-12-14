@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.AnimalDao;
 import com.techelevator.model.Animal;
+import com.techelevator.model.Volunteer;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -30,6 +31,11 @@ public class AnimalController {
     @RequestMapping(path = "/animals", method = RequestMethod.POST)
     public void addAnimal(@Valid @RequestBody Animal animal){
         dao.addAnimal(animal);
+    }
+
+    @RequestMapping(path = "/animals/{id}", method = RequestMethod.PUT)
+    public boolean updateAnimal(@Valid @PathVariable int id,@RequestBody Animal animal) {
+        return  dao.updateAnimal(id,animal);
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)

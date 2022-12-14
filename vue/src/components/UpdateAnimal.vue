@@ -1,7 +1,7 @@
 <template>
   <div>
-    <form class="update-pet" @submit.prevent="update">
-      <h1 class="h3 mb-3 font-weight-normal">Update this animal</h1>
+      <form class="update-pet" @submit.prevent="update">
+      <h1 class="h3 mb-3 font-weight-normal">Update {{this.animal.name}}</h1>
       <section class="sec-pet">
         <label for="type" class="pet">Type</label>
         <input type="text" v-model="updateAnimal.type" />
