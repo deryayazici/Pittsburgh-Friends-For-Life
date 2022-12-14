@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Adopter;
 import com.techelevator.model.Animal;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -49,11 +50,12 @@ public class JdbcAnimalDao implements AnimalDao{
     }
 
     @Override
-    public Animal addAnimal(Animal animal) {
+    public boolean addAnimal(Animal animal) {
 
-        String sql = "INSERT INTO animal (type, breed, age, size, temperament, name, " +
-                "special_needs, photo, is_adopted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)" +
-                " RETURNING animal_id";
+        String sql = "INSERT INTO animal (animal_id,type, breed, age, size, temperament, name, " +
+                "special_needs, photo, is_adopted) VALUES (default,?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+                "RETURNING animal_id;";
+
         Integer animalId = jdbcTemplate.queryForObject(sql, Integer.class,
                 animal.getType(),
                 animal.getBreed(),
@@ -63,10 +65,9 @@ public class JdbcAnimalDao implements AnimalDao{
                 animal.getName(),
                 animal.isSpecialNeeds(),
                 animal.getPhoto(),
-                animal.isAdopted());
+                true);
 
-        animal.setAnimalId(animalId);
-        return animal;
+        return animalId > 0;
     }
 
     @Override

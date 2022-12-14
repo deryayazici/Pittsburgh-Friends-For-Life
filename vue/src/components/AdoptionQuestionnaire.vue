@@ -1,6 +1,5 @@
 <template>
   <div id="questionnaire" class="text-center">
-    <h2>Hello</h2>
     <form class="form-questionnaire" @submit.prevent="save">
       <h1 class="h3 mb-3 font-weight-normal">Fill the Questionnaire</h1>
       <section class="sec-questionnaire">
@@ -93,12 +92,9 @@ export default {
       .then (response => {
        if(response.status === 201) {
       this.$router.push('/');
-
-                
+                  
       } 
      }) 
-
-
 
     },
   },

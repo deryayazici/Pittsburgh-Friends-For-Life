@@ -113,6 +113,7 @@ VALUES('testuser','123456789','user');
 INSERT INTO volunteer ( volunteer_id,first_name, last_name,address,phone_number,is_active)
 VALUES ((SELECT user_id FROM users WHERE user_id = 1 ),'test','test','address','412412412',true);
 
+
 INSERT INTO availability (volunteer_id,available_date,available_time)
 VALUES ((SELECT volunteer_id FROM volunteer WHERE volunteer_id =1),'2022-12-12','afternoon');
 

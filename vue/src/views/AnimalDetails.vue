@@ -6,8 +6,7 @@
     <router-link :to="{name:'register'}" v-if="!checkToken" >Please register before adopting</router-link>
     <button class="showForm" @click ="showForm" v-if="checkToken">Adopt</button>
     <adoption-questionnaire v-if="showQuestionnaire"></adoption-questionnaire>
-
-    
+ 
   </div>
 </template>
 
@@ -23,25 +22,6 @@ export default {
     return {
       showQuestionnaire:false,
       animal: {},
-      AdoptionQuestionnaire: {
-        questionnaire_id: 0,
-        first_name: "",
-        last_name: "",
-        number_children: 0,
-        housing_type: "",
-        fenced_yard: false,
-        walker: "",
-        years_of_pet_experience: 0,
-        renting_or_owning: "",
-        vet: "",
-        disabled: false,
-        animal_id: this.$router.animalId,
-        adopter_id: this.$store.state.user.id,
-        reference_one: "",
-        reference_one_contact: "",
-        reference_two: "",
-        reference_two_contact: "",
-      },
     };
   },
 
@@ -54,9 +34,7 @@ export default {
         });
     },
     showForm() {
-      this.showQuestionnaire = !this.showQuestionnaire;
-
-      
+      this.showQuestionnaire = !this.showQuestionnaire;   
     }
   },
    

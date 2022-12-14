@@ -22,7 +22,7 @@ public class DonationController {
     }
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "allDonations/{id}",method = RequestMethod.GET)
-    public List<Donation> listAllDoantionByUserId(@PathVariable int id){
+    public List<Donation> listAllDonationByUserId(@PathVariable int id){
         return donationDao.getAllDonationByUsersID(id);
     }
     
