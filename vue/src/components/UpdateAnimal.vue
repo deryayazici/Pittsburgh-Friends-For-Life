@@ -8,13 +8,13 @@
 
         <label for="breed" class="pet">Breed</label>
         <input type="text" v-model="updateAnimal.breed" />
-        
-        <label for="age" class="pet">Age</label >
+
+        <label for="age" class="pet">Age</label>
         <input type="number" v-model="updateAnimal.age" />
-        
+
         <label for="size" class="pet">Size</label>
         <input type="text" v-model="updateAnimal.size" />
-        
+
         <label for="temperament" class="pet">Temperament</label>
         <input type="text" v-model="updateAnimal.temperament" />
 
@@ -26,12 +26,12 @@
 
         <label for="photo">Add photo</label>
         <input type="text" v-model="updateAnimal.photo" />
-        
+
         <label for="is-adopted" class="pet">Adopted?</label>
         <input type="checkbox" v-model="updateAnimal.isAdopted"/>
 
-        <button class="btn-pet" type="submit" >Submit</button>
-      </section>    
+        <button class="btn-pet" type="submit">Submit</button>
+      </section>
     </form>
   </div>
 </template>
@@ -39,50 +39,37 @@
 <script>
 import animalService from "@/services/AnimalService.js";
 export default {
+  props: ["animal"],
 
-    props: ["animal"],
+  data() {
+    return {
+      updateAnimal: {
+        animalId: this.$route.params.animalId,
+        name: this.animal.name,
+        type: this.animal.type,
+        breed: this.animal.breed,
+        age: this.animal.age,
+        size: this.animal.size,
+        temperament: this.animal.temperament,
+        specialNeeds: this.animal.specialNeeds,
+        photo: this.animal.photo,
+        isAdopted: this.animal.isAdopted,
+      },
+    };
+  },
 
-    data() {
-        return {
-            updateAnimal: {
-                animalId: this.$route.params.animalId,
-                name: this.animal.name,
-                type: this.animal.type,
-                breed: this.animal.breed,
-                age: this.animal.age,
-                size: this.animal.size,
-                temperament: this.animal.temperament,
-                specialNeeds: this.animal.specialNeeds,
-                photo: this.animal.photo,
-                isAdopted: this.animal.isAdopted,
-                //  animalId: this.$route.params.animalId,
-                // name: "",
-                // type: "",
-                // breed:"",
-                // age: 0,
-                // size: "",
-                // temperament: "",
-                // specialNeeds: "",
-                // photo: "",
-                // isAdopted: false,
-
-            }
-        }
+  methods: {
+    update() {
+      animalService
+        .updateAnimal(this.updateAnimal.animalId, this.updateAnimal)
+        .then((response) => {
+          if (response.status === 200) {
+            this.$router.push("/");
+          }
+        });
     },
-
-    methods: {
-        update() {
-
-            animalService.updateAnimal(this.updateAnimal.animalId, this.updateAnimal).then((response) => {
-                if (response.status === 200) {
-                   // this.$router.push("/");
-                }
-            });
-        }
-    },
-    
-
-}
+  },
+};
 </script>
 
 <style>
@@ -115,6 +102,9 @@ html {
   border: 10px solid #fffffe;
   border-radius: 8px;
   background-color: #fffffe;
+  width: 90vw;
+  max-width: 600px;
+  margin: 1rem auto;
 }
 
 .sec-pet {
@@ -138,5 +128,10 @@ html {
   color: #fffffe;
   font-weight: bold;
   cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 4px;
+}
+.btn-pet:hover {
+  background-color: #ffc6c7;
 }
 </style>

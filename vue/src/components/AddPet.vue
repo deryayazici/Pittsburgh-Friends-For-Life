@@ -1,8 +1,7 @@
 <template>
-  
-       <div id="add-pet" class="text-center">
-           <!-- <button class="add-pet-form" @click="showForm" >Add Pet</button> -->
-          <!-- <add-pet v-if="isFormExtended"></add-pet> -->
+  <div id="add-pet" class="text-center">
+    <!-- <button class="add-pet-form" @click="showForm" >Add Pet</button> -->
+    <!-- <add-pet v-if="isFormExtended"></add-pet> -->
     <form class="form-pet" @submit.prevent="save">
       <h1 class="h3 mb-3 font-weight-normal">Fill the Questionnaire</h1>
       <section class="sec-pet">
@@ -10,8 +9,7 @@
         <input type="text" v-model="animal.type" />
         <label for="breed" class="pet">Breed</label>
         <input type="text" v-model="animal.breed" />
-        <label for="age" class="pet">Age
-          </label >
+        <label for="age" class="pet">Age </label>
         <input type="number" v-model="animal.age" />
         <label for="size" class="pet">Size</label>
         <input type="text" v-model="animal.size" />
@@ -19,34 +17,26 @@
         <input type="text" v-model="animal.temperament" />
         <label for="name" class="pet"> Name</label>
         <input type="text" v-model="animal.name" />
-        <label for="special-needs" class="pet"
-          >Special Needs</label
-        >
+        <label for="special-needs" class="pet">Special Needs</label>
         <input type="checkbox" v-model="animal.specialNeeds" />
         <label for="photo">Add photo</label>
         <!-- <input type="text" v-model="animal.vet" />
         <label for="vet">Vet</label> -->
-        <input type="text" v-model="animal.photo">
-        <button class="btn-pet" type="submit" >Submit</button>
-      </section>    
+        <input type="text" v-model="animal.photo" />
+        <button class="btn-pet" type="submit">Submit</button>
+      </section>
     </form>
-    
- 
   </div>
- 
 </template>
 
 <script>
-
-import animalService from '@/services/AnimalService.js';
+import animalService from "@/services/AnimalService.js";
 export default {
-    data() {
-  return {
-    
-   
-    isFormExtended: false,
-    // approvedVolunteer:[],
-    animal: {
+  data() {
+    return {
+      isFormExtended: false,
+      // approvedVolunteer:[],
+      animal: {
         type: "",
         breed: "",
         age: 0,
@@ -57,29 +47,23 @@ export default {
         photo: "",
         vet: "",
         disabled: false,
-        isAdopted:false
-
+        isAdopted: false,
       },
-       }
-},
-methods: {
+    };
+  },
+  methods: {
     save() {
-     animalService.addAdoptableAnimal(this.animal)
-      .then (response => {
-       if(response.status === 201) {
-      this.$router.push('/');
-                  
-      } 
-     }) 
-
+      animalService.addAdoptableAnimal(this.animal).then((response) => {
+        if (response.status === 201) {
+          this.$router.push("/");
+        }
+      });
     },
   },
-   showForm() {
-      this.isFormExtended = !this.isFormExtended;
-    },
-
-
-}
+  showForm() {
+    this.isFormExtended = !this.isFormExtended;
+  },
+};
 </script>
 
 <style>
@@ -98,6 +82,9 @@ methods: {
 html {
   font-family: "Limelight", cursive;
   min-height: 100vh;
+}
+#add-pet {
+  background-color: #fbfbbb;
 }
 .text-center {
   min-height: 100vh;
@@ -136,5 +123,4 @@ html {
   font-weight: bold;
   cursor: pointer;
 }
-
 </style>
