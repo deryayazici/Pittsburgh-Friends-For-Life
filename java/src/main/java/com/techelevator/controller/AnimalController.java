@@ -4,6 +4,7 @@ import com.techelevator.dao.AnimalDao;
 import com.techelevator.model.Animal;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class AnimalController {
     }
 
     @RequestMapping(path = "/animals", method = RequestMethod.POST)
-    public void addAnimal(Animal animal){
+    public void addAnimal(@Valid @RequestBody Animal animal){
         dao.addAnimal(animal);
     }
 

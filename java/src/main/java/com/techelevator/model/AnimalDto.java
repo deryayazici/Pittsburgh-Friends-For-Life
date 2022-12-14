@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotEmpty;
 
 public class AnimalDto {
-    @JsonProperty("animal_id")
+   @JsonProperty("animal_id")
     private int animalId;
     @NotEmpty
     private String type;
@@ -17,7 +17,7 @@ public class AnimalDto {
     @JsonProperty("special_needs")
     private boolean specialNeeds;
     private String photo;
-    @JsonProperty("is_adopted")
+   @JsonProperty("is_adopted")
     private boolean isAdopted;
 
     public int getAnimalId() {

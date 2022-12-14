@@ -13,7 +13,7 @@ public class Volunteer {
     private String phoneNumber;
     @NotEmpty
     private String address;
-    @NotEmpty
+
     private boolean isActive;
     @NotEmpty
     private String status;
