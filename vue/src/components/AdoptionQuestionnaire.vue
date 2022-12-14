@@ -7,21 +7,23 @@
         <input type="text" v-model="questionnaire.firstName" />
         <label for="last-name" class="questionnaire">Last Name</label>
         <input type="text" v-model="questionnaire.lastName" />
+        <label for="phone-number" class="volunteer">Phone Number</label>
+        <input type="text" v-model="questionnaire.phoneNumber" />
         <label for="children-number" class="questionnaire"
           >Number of Children</label
         >
         <input type="number" v-model="questionnaire.numberChildren" />
         <label for="housing-type" class="questionnaire">Housing Type</label>
         <input type="text" v-model="questionnaire.housingType" />
-        <label for="fenced-yard" class="questionnaire">Fenced Yard</label>
+        <label for="fenced-yard" class="questionnaire">Please click the box if you have a fenced yard ?</label>
         <input type="checkbox" v-model="questionnaire.fencedYard" />
-        <label for="walker" class="questionnaire"> Walker</label>
+        <label for="walker" class="questionnaire"> Who is a Walker ?</label>
         <input type="text" v-model="questionnaire.walker" />
         <label for="pet-experience" class="questionnaire"
-          >Years of Pet Experience</label
+          >How many years of Pet Experience do you have?</label
         >
         <input type="number" v-model="questionnaire.yearsOfPetExperience" />
-        <label for="renting-or-owning">Are renting or owning</label>
+        <label for="renting-or-owning">Is your house renting or owning</label>
         <select
           id="option"
           name="adopt"
@@ -30,24 +32,24 @@
           <option value="owning">Owning</option>
           <option value="renting">Renting</option>
         </select>
-        <label for="vet" class="questionnaire">Your vet</label>
+        <label for="vet" class="questionnaire">Who is your vet?</label>
         <input type="text" v-model="questionnaire.vet" />
-        <label for="disabled" class="questionnaire">Disabled</label>
+        <label for="disabled" class="questionnaire">Please click the box if you love disabled animal?</label>
         <input type="checkbox" v-model="questionnaire.disabled" />
-        <label for="referenceOne" class="questionnaire">First reference</label>
+        <h2>Please provide two reference</h2>
+        <label for="referenceOne" class="questionnaire">Reference name</label>
         <input type="text" v-model="questionnaire.referenceOne" />
         <label for="reference-one-contact" class="questionnaire"
-          >First reference contact</label
+          >Reference contact</label
         >
         <input type="text" v-model="questionnaire.referenceOneContact" />
-        <label for="referenceTwo" class="questionnaire">Second reference</label>
+        <label for="referenceTwo" class="questionnaire">Reference name</label>
         <input type="text" v-model="questionnaire.referenceTwo" />
         <label for="reference-two-contact" class="questionnaire"
-          >Second reference contact</label
+          >Reference contact</label
         >
         <input type="text" v-model="questionnaire.referenceTwoContact" />
-        <label for="phone-number" class="volunteer">Phone Number</label>
-        <input type="text" v-model="questionnaire.phoneNumber" />
+        
         <button class="btn-adopt" type="submit" >Submit</button>
       </section>
     </form>
