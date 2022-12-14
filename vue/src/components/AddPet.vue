@@ -24,8 +24,8 @@
         >
         <input type="checkbox" v-model="animal.specialNeeds" />
         <label for="photo">Add photo</label>
-        <input type="text" v-model="animal.vet" />
-        <label for="vet">Vet</label>
+        <!-- <input type="text" v-model="animal.vet" />
+        <label for="vet">Vet</label> -->
         <input type="text" v-model="animal.photo">
         <button class="btn-pet" type="submit" >Submit</button>
       </section>    
