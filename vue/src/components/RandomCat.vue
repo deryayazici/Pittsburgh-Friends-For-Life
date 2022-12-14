@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="quote">
     <p class="cat-fact">{{ cat }}</p>
   </div>
 </template>
@@ -27,9 +27,15 @@ export default {
 
 <style>
 .cat-fact {
-  text-align: center;
   font-size: 12px;
-  color: #3cf157;
+  color: #fffffe;
   margin-bottom: 2rem;
+  background-color: #ff8ba7;
+  max-width: 30em;
+  margin: auto;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 </style>

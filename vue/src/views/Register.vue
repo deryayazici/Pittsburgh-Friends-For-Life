@@ -116,13 +116,15 @@ html {
   font-family: "Limelight", cursive;
   min-height: 100vh;
 }
+#register {
+  background-color: #fbfbbb;
+}
 
 .text-center {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: start;
-  background-color: #fffffe;
 }
 .form-register,
 .form-signin {

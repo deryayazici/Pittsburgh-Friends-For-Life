@@ -19,9 +19,7 @@ import animalService from "@/services/AnimalService.js";
 import AdoptionQuestionnaire from "@/components/AdoptionQuestionnaire.vue";
 import UpdateAnimal from '../components/UpdateAnimal.vue';
 
-
 export default {
-   
   data() {
     return {
       showQuestionnaire:false,
@@ -46,7 +44,7 @@ export default {
       this.showUpdate = !this.showUpdate; 
     },
   },
-   
+
   created() {
     this.displayAnimalsDetails();
   },
@@ -70,15 +68,31 @@ export default {
           return false
           }
     },
-
- 
-},
-}
-
+  },
+};
 </script>
 
 <style>
 .animal-section-details {
   display: flex;
+  background-color: #fbfbbb;
+}
+.adopt-btn-div {
+  width: 90vw;
+  margin: 2rem auto;
+  text-align: center;
+}
+.showForm {
+  background-color: #ff8ba7;
+  padding: 0.25rem 0.75rem;
+  width: 50%;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  color: #fffffe;
+  cursor: pointer;
+}
+.showForm:hover {
+  background-color: #ffc6c7;
 }
 </style>

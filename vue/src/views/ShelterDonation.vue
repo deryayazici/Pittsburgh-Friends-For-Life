@@ -26,10 +26,16 @@
             <input
               class="donate-control"
               type="text"
-              placeholder="first name" v-model="donation.firstName"
+              placeholder="first name"
+              v-model="donation.firstName"
             />
-            <input class="donate-control" type="text" placeholder="last name" v-model="donation.lastName"/>
-            <input class="donate-control" type="date" v-model="donation.date"/>
+            <input
+              class="donate-control"
+              type="text"
+              placeholder="last name"
+              v-model="donation.lastName"
+            />
+            <input class="donate-control" type="date" v-model="donation.date" />
             <textarea
               class="donate-control"
               placeholder="description of items to donate..."
@@ -40,7 +46,7 @@
               v-model="donation.description"
             >
             </textarea>
-            <button class="donate-control" type="submit">Submit</button>
+            <button class="donate-btn" type="submit">Submit</button>
           </form>
         </div>
       </div>
@@ -52,30 +58,34 @@
 import donationService from "@/services/DonationService.js";
 export default {
   data() {
-    return{
-    donation: {
-      donatorId: this.$store.state.user.id,
-      firstName: "",
-      lastName: "",
-      date: "",
-      description: "",
+    return {
+      donation: {
+        donatorId: this.$store.state.user.id,
+        firstName: "",
+        lastName: "",
+        date: "",
+        description: "",
       },
-    }
+    };
   },
   methods: {
     submitDonation() {
-    donationService.submitDonation(this.donation).then((response) => {
-      if (response.status === 201) {
-        // this.$router.push("/");
-      }
-    }) 
+      donationService.submitDonation(this.donation).then((response) => {
+        if (response.status === 201) {
+          // this.$router.push("/");
+        }
+      });
+      this.donation = {
+        donatorId: this.$store.state.user.id,
+        firstName: "",
+        lastName: "",
+        date: "",
+        description: "",
+      };
     },
   },
-  computed: {
-    
-  }
+  computed: {},
 };
-
 </script>
 
 <style>
@@ -111,9 +121,23 @@ export default {
   max-width: 400px;
   margin-bottom: 3rem;
 }
+.donate-btn {
+  background-color: #ff8ba7;
+  border: 2px solid transparent;
+  width: 100%;
+  color: #fffffe;
+  font-family: inherit;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  letter-spacing: 4px;
+  cursor: pointer;
+}
+.donate-btn:hover {
+  background-color: #ffc6c7;
+}
 .donate-control {
   display: block;
-  margin: 0.5rem;
+  margin: 0.5rem auto;
   padding: 5px;
   font-family: inherit;
   border-radius: 8px;

@@ -126,6 +126,9 @@ html {
   font-family: "Limelight", cursive;
   min-height: 100vh;
 }
+#volunteer {
+  background-color: #fbfbbb;
+}
 .register-before {
   font-size: 1.5rem;
   padding: 0.5rem;
