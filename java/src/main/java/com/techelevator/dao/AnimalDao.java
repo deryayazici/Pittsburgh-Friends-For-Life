@@ -14,6 +14,8 @@ public interface AnimalDao {
 
     List<Animal> listAdoptableAnimals();
 
+    Animal getAnimalByName(String name);
+
 
 
 }

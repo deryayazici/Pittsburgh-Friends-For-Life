@@ -37,14 +37,14 @@ CREATE TABLE availability (
 
 CREATE TABLE animal(
    animal_id serial,
-   type varchar(10) not null,
+   type varchar(50) not null,
    breed varchar(50),
    age int,
-   size varchar(10),
+   size varchar(50),
    temperament varchar(50),
-   name varchar(20),
+   name varchar(50),
    special_needs boolean,
-   photo varchar (200),
+   photo varchar (800),
    is_adopted boolean,
 
    CONSTRAINT pk_animal PRIMARY KEY (animal_id)
@@ -145,6 +145,20 @@ VALUES ('bunny','unknown',2,'Anxious','Small','Roger',false,'https://i.imgur.com
 
 INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
 VALUES ('dog','mixed',4,'Friendly','Medium','Daisy',false,'https://i.imgur.com/gkcz5Ep.jpg',true);
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('bunny','bunny',2,'Friendly','Medium','Kelly',false,'rd.com/wp-content/uploads/2020/04/GettyImages-694542042-e1586274805503.jpg',false);
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('bunny','bunny',3,'Cute','Medium','Coco',false,'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80',false);
+
+INSERT INTO animal (type,breed,age,temperament,size, name,special_needs,photo,is_adopted)
+VALUES ('ferret','ferret',3,'Friendly','Medium','Speedy',false,'https://media.istockphoto.com/id/467883585/photo/adorable-ferret-staring-into-camera.jpg?s=612x612&w=0&k=20&c=C9pb2tAngaUeO1L-tvkxDnN3srOgEDjlbXjxRTqWOOE=',false);
+
+
+
+
+
 
 insert into donation (donation_id,donation_date, first_name,last_name,description)
 values(default,'01-01-2022','Bibek','siwakoti','i would like to donate');
