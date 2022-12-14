@@ -1,31 +1,35 @@
 <template>
   <div>
-      <form class="update-pet" @submit.prevent="save">
+      <form class="update-pet" @submit.prevent="update">
       <h1 class="h3 mb-3 font-weight-normal">Update this animal</h1>
       <section class="sec-pet">
         <label for="type" class="pet">Type</label>
         <input type="text" v-model="updateAnimal.type" />
+
         <label for="breed" class="pet">Breed</label>
-
         <input type="text" v-model="updateAnimal.breed" />
+        
         <label for="age" class="pet">Age</label >
-
         <input type="number" v-model="updateAnimal.age" />
+        
         <label for="size" class="pet">Size</label>
-
         <input type="text" v-model="updateAnimal.size" />
+        
         <label for="temperament" class="pet">Temperament</label>
-
         <input type="text" v-model="updateAnimal.temperament" />
+
         <label for="name" class="pet"> Name</label>
+        <input type="text" v-model="updateAnimal.name" />
 
-        <input type="text" v-model="updateAnimal.specialNeeds" />
         <label for="special-needs" class="pet">Special Needs</label>
+        <input type="checkbox" v-model="updateAnimal.specialNeeds" />
 
-        <input type="checkbox" v-model="updateAnimal.photo" />
         <label for="photo">Add photo</label>
+        <input type="text" v-model="updateAnimal.photo" />
+        
+        <label for="is-adopted" class="pet">Adopted?</label>
+        <input type="checkbox" v-model="updateAnimal.isAdopted" />
 
-        <input type="text" v-model="updateAnimal.photo">
         <button class="btn-pet" type="submit" >Submit</button>
       </section>    
     </form>
