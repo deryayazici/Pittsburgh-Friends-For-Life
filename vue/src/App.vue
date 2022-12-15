@@ -1,11 +1,17 @@
 <template>
   <div id="app">
     <div class="section-title">
+      <i class="fa-solid fa-paw left"></i>
       <h1 class="title">Pittsburgh Friends For Life</h1>
+      <i class="fa-solid fa-paw right"></i>
     </div>
 
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <base-button>
+        <router-link v-bind:to="{ name: 'home' }"
+          >Home</router-link
+        ></base-button
+      >&nbsp;|&nbsp;
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
@@ -36,7 +42,8 @@ export default {
 
 <style>
 body {
-  background-color: #fbfbbb;
+  /* background-color: #fbfbbb; */
+  background-color: #545454;
 }
 
 #nav {
@@ -45,20 +52,48 @@ body {
   justify-content: space-around;
   font-size: 1.5rem;
 }
+#nav a {
+  background-color: #ff8ba7;
+  color: #fffffe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  letter-spacing: 2px;
+}
+#nav a:hover,
+a:active {
+  background-color: #ffc6c7;
+}
 
 .section-title {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
   padding: 4rem 0 1rem;
   width: 90vw;
   max-width: 600px;
   margin: 0 auto;
+}
+.left {
+  position: absolute;
+  top: 58px;
+  left: -100px;
+  font-size: 4rem;
+  color: var(--clr-2);
+}
+.right {
+  position: absolute;
+  top: 58px;
+  right: -100px;
+  font-size: 4rem;
+  color: var(--clr-2);
 }
 .title {
   text-align: center;
   letter-spacing: 4px;
   color: #fffffe;
   /* border: 5px solid #ff8ba7; */
-  padding: 10px 0;
+  padding: 10px 20px;
   background-color: var(--clr-1);
-  border-radius: 4px;
+  border-radius: 8px;
 }
 </style>

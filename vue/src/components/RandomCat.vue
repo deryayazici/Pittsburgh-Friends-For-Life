@@ -27,10 +27,11 @@ export default {
 
 <style>
 .cat-fact {
-  font-size: 12px;
-  color: #fffffe;
+  font-size: 18px;
+  /* color: #fffffe; */
+  color: var(--clr-2);
   margin-bottom: 2rem;
-  background-color: #ff8ba7;
+  /* background-color: #ff8ba7; */
   max-width: 30em;
   margin: auto;
   text-align: center;

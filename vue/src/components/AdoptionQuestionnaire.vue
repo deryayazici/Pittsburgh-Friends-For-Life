@@ -15,7 +15,9 @@
         <input type="number" v-model="questionnaire.numberChildren" />
         <label for="housing-type" class="questionnaire">Housing Type</label>
         <input type="text" v-model="questionnaire.housingType" />
-        <label for="fenced-yard" class="questionnaire">Please click the box if you have a fenced yard ?</label>
+        <label for="fenced-yard" class="questionnaire"
+          >Please click the box if you have a fenced yard ?</label
+        >
         <input type="checkbox" v-model="questionnaire.fencedYard" />
         <label for="walker" class="questionnaire"> Who is a Walker ?</label>
         <input type="text" v-model="questionnaire.walker" />
@@ -34,7 +36,9 @@
         </select>
         <label for="vet" class="questionnaire">Who is your vet?</label>
         <input type="text" v-model="questionnaire.vet" />
-        <label for="disabled" class="questionnaire">Please click the box if you love disabled animal?</label>
+        <label for="disabled" class="questionnaire"
+          >Please click the box if you love disabled animal?</label
+        >
         <input type="checkbox" v-model="questionnaire.disabled" />
         <h2>Please provide two reference</h2>
         <label for="referenceOne" class="questionnaire">Reference name</label>

@@ -117,7 +117,8 @@ html {
   min-height: 100vh;
 }
 #register {
-  background-color: #fbfbbb;
+  /* background-color: #fbfbbb; */
+  background-color: #545454;
 }
 
 .text-center {

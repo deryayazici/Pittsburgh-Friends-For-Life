@@ -1,5 +1,6 @@
 <template>
   <div id="volunteer" class="text-center">
+    <!-- gif v-if="method" -->
     <!-- <label for="username">Username</label>
       <input type="text"> -->
     <div class="show form" v-if="checkToken">
@@ -91,10 +92,12 @@ export default {
 
       volunteerService.addVolunteer(this.volunteer).then((response) => {
         if (response.status === 201) {
+          // method()
           this.$router.push("/");
         }
       });
     },
+    // methods display a gif
   },
 
   computed: {
@@ -127,7 +130,8 @@ html {
   min-height: 100vh;
 }
 #volunteer {
-  background-color: #fbfbbb;
+  /* background-color: #fbfbbb; */
+  background-color: #545454;
 }
 .register-before {
   font-size: 1.5rem;

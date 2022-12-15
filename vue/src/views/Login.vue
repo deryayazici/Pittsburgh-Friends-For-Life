@@ -77,7 +77,8 @@ export default {
 
 <style>
 #login {
-  background-color: #fbfbbb;
+  /* background-color: #fbfbbb; */
+  background-color: #545454;
 }
 .text-center {
   background-color: #fbfbbb;
