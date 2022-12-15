@@ -121,7 +121,8 @@ html {
   min-height: 100vh;
 }
 #questionnaire {
-  background-color: #fbfbbb;
+  /* background-color: #fbfbbb; */
+  background-color: #545454;
 }
 .text-center {
   min-height: 100vh;
