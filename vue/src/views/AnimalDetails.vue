@@ -91,6 +91,7 @@ export default {
 .animal-section-details {
   display: flex;
   background-color: #fbfbbb;
+  background-color: #545454;
 }
 .adopt-btn-div {
   width: 90vw;

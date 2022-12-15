@@ -84,7 +84,8 @@ html {
   min-height: 100vh;
 }
 #add-pet {
-  background-color: #fbfbbb;
+  /* background-color: #fbfbbb; */
+  background-color: #545454;
 }
 .text-center {
   min-height: 100vh;
